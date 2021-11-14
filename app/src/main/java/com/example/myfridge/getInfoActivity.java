@@ -17,8 +17,12 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class getInfoActivity extends AppCompatActivity {
     String codebarre;
+    String dateAjout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,12 @@ public class getInfoActivity extends AppCompatActivity {
         Response.ErrorListener responseErrorListener = new urlResponseErrorListener();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
         requestQueue.add(stringRequest);
+
+        // récupération date d'ajout
+        Calendar calendrier=Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        dateAjout= df.format(calendrier.getTime());
+
     }
 
     private class urlResponseListener implements Response.Listener<String> {
@@ -52,7 +62,7 @@ public class getInfoActivity extends AppCompatActivity {
 
                 //affichage du nom du produit
                 TextView textView = findViewById(R.id.nomProduit);
-                textView.setText(nomProduit);
+                textView.setText("nom du Produit: " + nomProduit +"\n" + "Date de l'ajout: " + dateAjout);
                 Log.i("test", "affiche nom Produit");
             } catch (JSONException e) {
                 e.printStackTrace();
