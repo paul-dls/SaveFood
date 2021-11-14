@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".getInfoActivity">
@@ -12,6 +13,25 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="162dp" />
+        tools:layout_editor_absoluteY="162dp"
+        android:layout_marginTop="10dp" />
+
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        app:layout_constraintTop_toBottomOf="@id/nomProduit">
+    </DatePicker>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Entrez date"
+        android:onClick="ajouterDate"
+        app:layout_constraintTop_toBottomOf="@id/datePicker1"/>
+
 
 </LinearLayout>

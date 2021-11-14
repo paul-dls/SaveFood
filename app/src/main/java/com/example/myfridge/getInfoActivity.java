@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -22,7 +25,9 @@ import java.util.Calendar;
 
 public class getInfoActivity extends AppCompatActivity {
     String codebarre;
+    String nomProduit;
     String dateAjout;
+    String datePeremption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +48,23 @@ public class getInfoActivity extends AppCompatActivity {
 
         // récupération date d'ajout
         Calendar calendrier=Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM -yyyy");
         dateAjout= df.format(calendrier.getTime());
+
+    }
+
+    public void ajouterDate(View view) {
+        DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.datePicker1); // initiate a date picker
+        String day = String.valueOf(simpleDatePicker.getDayOfMonth()); // get the selected day of the month
+        String month =String.valueOf(simpleDatePicker.getMonth()); // get the selected month
+        String year = String.valueOf(simpleDatePicker.getYear()); // get the selected year
+
+        datePeremption= day + "-" +month + "-"+year;
+
+        //affichage du nom du produit
+        TextView textView = findViewById(R.id.nomProduit);
+        textView.setText("nom du Produit: " + nomProduit +"\n" + "Date de l'ajout: " + dateAjout + "\n" + "date de péremption: " + datePeremption);
+
 
     }
 
@@ -57,12 +77,10 @@ public class getInfoActivity extends AppCompatActivity {
                 Log.i("test", "recupère JSON");
                 JSONObject product = obj.getJSONObject("product");
                 Log.i("test", "recupère JSON product");
-                String nomProduit = product.getString("product_name");
+                nomProduit = product.getString("product_name");
                 Log.i("test", "nomProduit");
 
-                //affichage du nom du produit
-                TextView textView = findViewById(R.id.nomProduit);
-                textView.setText("nom du Produit: " + nomProduit +"\n" + "Date de l'ajout: " + dateAjout);
+
                 Log.i("test", "affiche nom Produit");
             } catch (JSONException e) {
                 e.printStackTrace();
