@@ -131,10 +131,28 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
         txtView.post(new Runnable() {
             @Override
             public void run() {
-
+                String rawDateString ="no date";
                 String textRecup = strBuilder.toString();
+                Log.i("erreur", "run est lancé");
 
-                txtView.setText(textRecup);
+                // compilation de la regex
+                Pattern p = Pattern.compile("((0[1-9])|([1-2][0-9])|(30)|(31))[/:\\.\\- ]((0[1-9])|(1[0-2]))[/:\\.\\- ]((202[1-9])|(2[1-9]))");
+                // création d'un moteur de recherche
+                Matcher m = p.matcher(strBuilder);
+                // lancement de la recherche de toutes les occurrences
+
+                if (m.find()) {
+                    rawDateString = m.group();
+                }
+                txtView.setText(rawDateString );
+                try{
+                    String strDatewithTime = "2015-08-04T10:11:30";
+                    LocalDateTime aLDT = LocalDateTime.parse(strDatewithTime);
+                }catch(DateTimeParseException e){
+                    Log.i("erreur date paul", String.format("la date %d n'es pas valable", rawDateString));
+                    rawDateString = String.format("la date %d n'es pas valable", rawDateString);
+                }
+                txtView.setText(rawDateString);
             }
         });
     }
