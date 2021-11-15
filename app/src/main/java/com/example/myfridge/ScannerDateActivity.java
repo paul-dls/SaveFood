@@ -2,6 +2,7 @@ package com.example.myfridge;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,8 +21,9 @@ import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,7 +43,7 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                     try {
                         cameraSource.start(cameraView.getHolder());
                     } catch (Exception e) {
-                        Log.i("cemera",e.toString());
+                        Log.i("erreur cemera date paul",e.toString());
                     }
                 }
             }
@@ -57,7 +59,7 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
         txtView = findViewById(R.id.txtview);
         TextRecognizer txtRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         if (!txtRecognizer.isOperational()) {
-            Log.e("Main Activity", "Detector dependencies are not yet available");
+            Log.e("erreur camera date paul", "les dependencies du detecteur de text ne sont pas encore disponibles");
         } else {
             cameraSource = new CameraSource.Builder(getApplicationContext(), txtRecognizer)
                     .setFacing(CameraSource.CAMERA_FACING_BACK)
@@ -103,56 +105,62 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
     public void receiveDetections(Detector.Detections detections) {
         SparseArray items = detections.getDetectedItems();
         final StringBuilder strBuilder = new StringBuilder();
-        for (int i = 0; i < items.size(); i++)
-        {
-            TextBlock item = (TextBlock)items.valueAt(i);
-            strBuilder.append(item.getValue());
-            strBuilder.append("/");
-            // The following Process is used to show how to use lines & elements as well
-            for (int j = 0; j < items.size(); j++) {
-                TextBlock textBlock = (TextBlock) items.valueAt(j);
-                strBuilder.append(textBlock.getValue());
-                strBuilder.append("/");
-                for (Text line : textBlock.getComponents()) {
-                    //extract scanned text lines here
-                    Log.v("lines", line.getValue());
-                    strBuilder.append(line.getValue());
-                    strBuilder.append("/");
-                    for (Text element : line.getComponents()) {
-                        //extract scanned text words here
-                        Log.v("element", element.getValue());
-                        strBuilder.append(element.getValue());
-                    }
+
+        for (int j = 0; j < items.size(); j++) {
+            TextBlock textBlock = (TextBlock) items.valueAt(j);
+
+            //on recupère les paragraphes (séparées par des *)
+            //strBuilder.append(textBlock.getValue());
+            strBuilder.append("*");
+
+            for (Text line : textBlock.getComponents()) {
+                //on recupère les lignes (séparées par des _)
+                //Log.v("fontionnement normal camera date paul, lines", line.getValue());
+                //strBuilder.append(line.getValue());
+                strBuilder.append("_");
+                for (Text element : line.getComponents()) {
+                    //on recupère les mots
+                    Log.v("fontionnement normal camera date paul", element.getValue());
+                    strBuilder.append(element.getValue());
+                    strBuilder.append(" ");
                 }
             }
         }
-        Log.v("strBuilder.toString()", strBuilder.toString());
+
+        Log.v("fonctionnement normal camera date paul, strBuilder.toString()", strBuilder.toString());
 
         txtView.post(new Runnable() {
             @Override
             public void run() {
                 String rawDateString ="no date";
-                String textRecup = strBuilder.toString();
-                Log.i("erreur", "run est lancé");
+                String textRecup = strBuilder.toString();// textge brut récupéré
+                Log.v("fonctionnement normal date paul, textRecup        ", textRecup);
 
-                // compilation de la regex
-                Pattern p = Pattern.compile("((0[1-9])|([1-2][0-9])|(30)|(31))[/:\\.\\- ]((0[1-9])|(1[0-2]))[/:\\.\\- ]((202[1-9])|(2[1-9]))");
-                // création d'un moteur de recherche
-                Matcher m = p.matcher(strBuilder);
-                // lancement de la recherche de toutes les occurrences
+                //on le met au format iso
+                textRecup = textRecup.replaceAll("[\\. /:]", "\\-");
+                Log.i("fonctionnement normal date paul, textRecupModifié ", textRecup);
 
+                // on créé un moteur de recherche de date
+                Pattern p = Pattern.compile("((0[1-9])|([1-2][0-9])|(30)|(31))\\-((0[1-9])|(1[0-2]))\\-((202[1-9])|(2[1-9]))");
+                Matcher m = p.matcher(textRecup);
+
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+                //to do, utiliser un while et cecker plusieurs date si la premiere declanche une erreur
                 if (m.find()) {
+                    Log.v("fonctionnement normal date paul","au moins un mot du format date trouvé");
                     rawDateString = m.group();
+                    try {
+                        Date datePeremption = format.parse(rawDateString);
+                        Log.v("fonctionnement normal date paul, textRecupModifié ","");
+                    } catch (ParseException e) {
+                        Log.i("erreur date paul", String.format("la date %s n'es pas valable", rawDateString));
+                        Log.i("erreur date paul", String.valueOf(e));
+                    }
                 }
-                txtView.setText(rawDateString );
-                try{
-                    String strDatewithTime = "2015-08-04T10:11:30";
-                    LocalDateTime aLDT = LocalDateTime.parse(strDatewithTime);
-                }catch(DateTimeParseException e){
-                    Log.i("erreur date paul", String.format("la date %d n'es pas valable", rawDateString));
-                    rawDateString = String.format("la date %d n'es pas valable", rawDateString);
-                }
+
                 txtView.setText(rawDateString);
+
             }
         });
     }
