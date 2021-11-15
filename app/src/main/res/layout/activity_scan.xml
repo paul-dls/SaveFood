@@ -8,11 +8,23 @@
     tools:context=".ScanActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/goScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:onClick="onClickScanner"
         android:text="go Scan" />
+
+    <Button
+        android:id="@+id/ajout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="50dp"
+        android:onClick="ajoutManuel"
+        android:text="ajout manuel"
+        android:translationX="125dp"
+        android:translationY="100dp" />
+
 </RelativeLayout>

@@ -53,4 +53,10 @@ public class ScanActivity extends AppCompatActivity {
         intentIntegrator.setBarcodeImageEnabled(false); //set to true enables saving the barcode image and sending its paths in the result intent
         intentIntegrator.initiateScan();
     }
+
+    public void ajoutManuel(View view) {
+        Intent versAjoutManuelActivity= new Intent();
+        versAjoutManuelActivity.setClass(this,AjoutManuelActivity.class);
+        startActivity(versAjoutManuelActivity);
+    }
 }

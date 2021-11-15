@@ -38,7 +38,7 @@ public class getInfoActivity extends AppCompatActivity {
         Intent deMainActivity = getIntent();
         codebarre = deMainActivity.getStringExtra("codebarre");
 
-        //requête internet pour trouver la nom du produit
+        //requête internet pour trouver le nom du produit
         String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Response.Listener<String> responseListener = new urlResponseListener();
@@ -54,6 +54,8 @@ public class getInfoActivity extends AppCompatActivity {
     }
 
     public void ajouterDate(View view) {
+
+        //récupération de la date de péremption
         DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.datePicker1); // initiate a date picker
         String day = String.valueOf(simpleDatePicker.getDayOfMonth()); // get the selected day of the month
         String month =String.valueOf(simpleDatePicker.getMonth()); // get the selected month
@@ -61,7 +63,7 @@ public class getInfoActivity extends AppCompatActivity {
 
         datePeremption= day + "-" +month + "-"+year;
 
-        //affichage du nom du produit
+        //affichage données du produit
         TextView textView = findViewById(R.id.nomProduit);
         textView.setText("nom du Produit: " + nomProduit +"\n" + "Date de l'ajout: " + dateAjout + "\n" + "date de péremption: " + datePeremption);
 
