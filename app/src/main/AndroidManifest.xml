@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFridge">
         <activity
+            android:name=".Notification_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Page_de_garde_Activity"
             android:exported="false" />
         <activity
@@ -24,7 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".getInfoActivity"
             android:exported="false" />
