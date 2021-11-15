@@ -6,21 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remplir mon frigo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="354dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="4dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/textView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,6 +19,7 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="AfficherContenuFrigo"
             android:text="Voir le contenu mon frigo" />
 
         <Button
@@ -42,6 +33,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Voir ma liste de course" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mettre à jour les produits" />
+
+        <ListView
+            android:id="@+id/listViewAliments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

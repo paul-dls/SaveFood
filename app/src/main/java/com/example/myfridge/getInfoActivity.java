@@ -50,7 +50,7 @@ public class getInfoActivity extends AppCompatActivity {
         Calendar calendrier=Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM -yyyy");
         dateAjout= df.format(calendrier.getTime());
-
+        Log.i("fonctionnement normal", "date d'ajout récupérée");
     }
 
     public void ajouterDate(View view) {
@@ -62,12 +62,18 @@ public class getInfoActivity extends AppCompatActivity {
         String year = String.valueOf(simpleDatePicker.getYear()); // get the selected year
 
         datePeremption= day + "-" +month + "-"+year;
+        Log.i("fonctionnement normal", "date de péremption récupérée");
 
         //affichage données du produit
         TextView textView = findViewById(R.id.nomProduit);
         textView.setText("nom du Produit: " + nomProduit +"\n" + "Date de l'ajout: " + dateAjout + "\n" + "date de péremption: " + datePeremption);
 
 
+        //Ajout de l'aliment dans la base de données
+        AlimentsOperations alimentsOperations = new AlimentsOperations(this);
+        alimentsOperations.open();
+        alimentsOperations.addAliments(new Aliments(Integer.valueOf(codebarre),nomProduit,dateAjout));
+        alimentsOperations.close();
     }
 
     private class urlResponseListener implements Response.Listener<String> {
