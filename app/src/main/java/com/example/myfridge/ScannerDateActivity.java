@@ -120,25 +120,25 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                 strBuilder.append("_");
                 for (Text element : line.getComponents()) {
                     //on recupère les mots
-                    Log.v("fontionnement normal camera date paul", element.getValue());
+                    Log.v("normal camera date paul", element.getValue());
                     strBuilder.append(element.getValue());
                     strBuilder.append(" ");
                 }
             }
         }
 
-        Log.v("fonctionnement normal camera date paul, strBuilder.toString()", strBuilder.toString());
+        Log.v("normal camera date paul", strBuilder.toString());
 
         txtView.post(new Runnable() {
             @Override
             public void run() {
                 String rawDateString ="no date";
                 String textRecup = strBuilder.toString();// textge brut récupéré
-                Log.v("fonctionnement normal date paul, textRecup        ", textRecup);
+                Log.v("normal date paul", "textRecup        " +textRecup);
 
                 //on le met au format iso
                 textRecup = textRecup.replaceAll("[\\. /:]", "\\-");
-                Log.i("fonctionnement normal date paul, textRecupModifié ", textRecup);
+                Log.i("normal date paul", "textRecupModifié = " +textRecup);
 
                 // on créé un moteur de recherche de date
                 Pattern p = Pattern.compile("((0[1-9])|([1-2][0-9])|(30)|(31))\\-((0[1-9])|(1[0-2]))\\-((202[1-9])|(2[1-9]))");
@@ -148,11 +148,10 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
 
                 //to do, utiliser un while et cecker plusieurs date si la premiere declanche une erreur
                 if (m.find()) {
-                    Log.v("fonctionnement normal date paul","au moins un mot du format date trouvé");
+                    Log.v("normal date paul","au moins un mot du format date trouvé");
                     rawDateString = m.group();
                     try {
                         Date datePeremption = format.parse(rawDateString);
-                        Log.v("fonctionnement normal date paul, textRecupModifié ","");
                     } catch (ParseException e) {
                         Log.i("erreur date paul", String.format("la date %s n'es pas valable", rawDateString));
                         Log.i("erreur date paul", String.valueOf(e));
