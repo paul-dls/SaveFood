@@ -52,7 +52,7 @@ public class getInfoActivity extends AppCompatActivity {
         dateAjout= df.format(calendrier.getTime());
         Log.i("fonctionnement normal", "date d'ajout récupérée");
     }
-
+    //récupération de la date de péremption entrée par l'utilisateur et de la date d'ajout du produit, pour la transmettre à la BDD
     public void ajouterDate(View view) {
 
         //récupération de la date de péremption

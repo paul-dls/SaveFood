@@ -1,6 +1,8 @@
 package com.example.myfridge;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
@@ -31,9 +33,17 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarNavigationDrawer.toolbar);
         binding.appBarNavigationDrawer.fab.setOnClickListener(new View.OnClickListener() {
             @Override
+            //methode Onclick pour ajouter un produit dans le frigo à partir de Home
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Log.i("fonctionnement normal", "appel ajout de produit");
+                Intent VersScanActivity= new Intent();
+                VersScanActivity.setClass(getLayoutInflater().getContext(), ScanActivity.class);
+                VersScanActivity.putExtra("message", "ok");
+                startActivity(VersScanActivity);
+                Log.i("fonctionnement normal", "intent vers Scan actvity dans l'ajout de produit");
+
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //.setAction("Action", null).show();
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -62,4 +72,5 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }
