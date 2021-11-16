@@ -16,7 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.myfridge.ui.home.AjoutAliment;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,7 +71,7 @@ public class getInfoActivity extends AppCompatActivity {
         Log.i("fonctionnement normal", "date de péremption récupérée");
 
         Intent versAjoutAliment = new Intent();
-        versAjoutAliment.setClass(this, AjoutAliment.class);
+        versAjoutAliment.setClass(this, AjoutAlimentDate.class);
         versAjoutAliment.putExtra("DatePeremption", datePeremption);
         startActivity(versAjoutAliment);
 

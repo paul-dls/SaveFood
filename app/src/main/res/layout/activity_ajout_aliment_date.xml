@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.AjoutAlimentCodebarre">
+    tools:context=".AjoutAlimentDate">
 
     <Button
-        android:id="@+id/boutonScanCode"
+        android:id="@+id/boutonScanDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="ScanCodebarre"
-        android:text="scan du code barre" />
+        android:onClick="ScanDate"
+        android:text="Scanner la date de péremption" />
 
     <Button
-        android:id="@+id/boutonCodeManuel"
+        android:id="@+id/boutonDateManuel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="EntreeCodeManuel"
-        android:text="ajout manuel du codebarre" />
+        android:onClick="EntreeManuelleDate"
+        android:text="Entrée manuelle de la date de péremption" />
 
     <TextView
-        android:id="@+id/TextNomProduit"
+        android:id="@+id/TextDatePeremption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Nom du produit" />
-
+        android:hint="date de péremption" />
 
     <Button
-        android:id="@+id/boutonNewProduct"
+        android:id="@+id/boutonEntree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="AjouterProduit"
-        android:text="Ajouter Produit" />
+        android:onClick="AjouterAlimentBDD"
+        android:text="Entree la date de péremption" />
 </LinearLayout>

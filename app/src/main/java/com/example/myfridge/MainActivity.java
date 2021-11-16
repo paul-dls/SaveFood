@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.myfridge.ui.home.AjoutAlimentCodebarre;
+
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void ajouter(View view) {
         Log.i("scan", "rentre dans le onClick");
-        Intent VersScanActivity= new Intent();
-        VersScanActivity.setClass(this, ScanActivity.class);
-        VersScanActivity.putExtra("message", "ok");
-        startActivity(VersScanActivity);
-        Log.i("scan", "intent vers ScanActivity");
+        Intent VersAjoutAliment= new Intent();
+        VersAjoutAliment.setClass(this, AjoutAlimentCodebarre.class);
+        VersAjoutAliment.putExtra("message", "ok");
+        startActivity(VersAjoutAliment);
+        Log.i("scan", "intent vers AjoutAliment");
     }
 }

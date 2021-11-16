@@ -14,7 +14,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.myfridge.ui.home.AjoutAliment;
+import com.example.myfridge.ui.home.AjoutAlimentCodebarre;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,7 +57,7 @@ public class AjoutManuelActivity extends AppCompatActivity {
             }
 
             Intent VersAjoutAliment = new Intent();
-            VersAjoutAliment.setClass(getBaseContext(),AjoutAliment.class);
+            VersAjoutAliment.setClass(getBaseContext(), AjoutAlimentCodebarre.class);
             VersAjoutAliment.putExtra("codebarre",codebarre);
             VersAjoutAliment.putExtra("NomProduit",nomProduit);
             startActivity(VersAjoutAliment);
@@ -73,7 +74,7 @@ public class AjoutManuelActivity extends AppCompatActivity {
         EditText editCodebarre = findViewById(R.id.editCodebarre);
         codebarre = editCodebarre.getText().toString();
         Intent versAjoutAliment = new Intent();
-        versAjoutAliment.setClass(this, AjoutAliment.class);
+        versAjoutAliment.setClass(this, AjoutAlimentDate.class);
         versAjoutAliment.putExtra("codebarre",codebarre);
         versAjoutAliment.putExtra("NomProduit",nomProduit);
         startActivity(versAjoutAliment);

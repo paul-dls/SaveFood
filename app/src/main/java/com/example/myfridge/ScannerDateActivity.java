@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.example.myfridge.ui.home.AjoutAliment;
+
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.Text;
@@ -159,7 +159,7 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                     }
                 }
                 Intent versAjoutAliment = new Intent();
-                versAjoutAliment.setClass(getBaseContext(), AjoutAliment.class);
+                versAjoutAliment.setClass(getBaseContext(), AjoutAlimentDate.class);
                 versAjoutAliment.putExtra("DatePeremption", rawDateString);
                 startActivity(versAjoutAliment);
                 txtView.setText(rawDateString);

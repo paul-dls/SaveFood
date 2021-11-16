@@ -15,7 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.myfridge.ui.home.AjoutAliment;
+
+import com.example.myfridge.ui.home.AjoutAlimentCodebarre;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -70,7 +71,7 @@ public class ScanActivity extends AppCompatActivity {
             }
 
             Intent VersAjoutAliment = new Intent();
-            VersAjoutAliment.setClass(getBaseContext(),AjoutAliment.class);
+            VersAjoutAliment.setClass(getBaseContext(), AjoutAlimentCodebarre.class);
             VersAjoutAliment.putExtra("codebarre",codebarre);
             VersAjoutAliment.putExtra("nomProduit",nomProduit);
             startActivity(VersAjoutAliment);

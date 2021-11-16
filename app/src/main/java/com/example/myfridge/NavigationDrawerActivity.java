@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
-import com.example.myfridge.ui.home.AjoutAliment;
+import com.example.myfridge.ui.home.AjoutAlimentCodebarre;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,7 +38,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i("fonctionnement normal", "appel ajout de produit");
                 Intent VersAjoutAliment= new Intent();
-                VersAjoutAliment.setClass(getLayoutInflater().getContext(), AjoutAliment.class);
+                VersAjoutAliment.setClass(getLayoutInflater().getContext(), AjoutAlimentCodebarre.class);
                 VersAjoutAliment.putExtra("message", "ok");
                 startActivity(VersAjoutAliment);
                 Log.i("fonctionnement normal", "intent vers Scan actvity dans l'ajout de produit");
