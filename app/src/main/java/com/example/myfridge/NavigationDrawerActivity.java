@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.myfridge.ui.home.AjoutAliment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -36,10 +37,10 @@ public class NavigationDrawerActivity extends AppCompatActivity {
             //methode Onclick pour ajouter un produit dans le frigo à partir de Home
             public void onClick(View view) {
                 Log.i("fonctionnement normal", "appel ajout de produit");
-                Intent VersScanActivity= new Intent();
-                VersScanActivity.setClass(getLayoutInflater().getContext(), ScanActivity.class);
-                VersScanActivity.putExtra("message", "ok");
-                startActivity(VersScanActivity);
+                Intent VersAjoutAliment= new Intent();
+                VersAjoutAliment.setClass(getLayoutInflater().getContext(), AjoutAliment.class);
+                VersAjoutAliment.putExtra("message", "ok");
+                startActivity(VersAjoutAliment);
                 Log.i("fonctionnement normal", "intent vers Scan actvity dans l'ajout de produit");
 
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

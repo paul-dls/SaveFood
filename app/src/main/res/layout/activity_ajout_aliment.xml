@@ -12,17 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="ScanCodebarre"
-        android:text="Button" />
+        android:text="scan du code barre" />
 
     <Button
         android:id="@+id/boutonCodeManuel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="EntreeCodeManuel"
-        android:text="Button" />
+        android:text="ajout manuel du codebarre" />
 
-    <EditText
-        android:id="@+id/editTextCodebarre"
+    <TextView
+        android:id="@+id/TextNomProduit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,17 +34,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="ScanDate"
-        android:text="Button" />
+        android:text="sacanner la date de péremption" />
 
     <Button
         android:id="@+id/boutonDateManuel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="entreeDateManuel"
-        android:text="Button" />
+        android:text="ajouter manuel de la date de péremption" />
 
-    <EditText
-        android:id="@+id/editTextDate"
+    <TextView
+        android:id="@+id/TextDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
