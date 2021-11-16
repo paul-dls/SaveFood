@@ -72,7 +72,7 @@ public class AlimentsOperations {
                 cursor.getColumnIndexOrThrow(dbHelper.getDate_Ajout());
         if (cursor.moveToFirst() == true) {
             do {
-                int id = cursor.getInt(numeroColonneId);
+                String id = cursor.getString(numeroColonneId);
                 String nom_produit = cursor.getString(numeroColonneNom_Produit);
                 String date_ajout =
                         cursor.getString(numeroColonneDate_Ajout);

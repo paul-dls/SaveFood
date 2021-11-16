@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
 
         //affichage de la liste des aliments de la BDD dans le listView
         View view = inflater.inflate(R.layout.fragment_home,container,false);
-        ListView listViewAliment = (ListView) view.findViewById(R.id.listViewAliments);
+        ListView listViewAliment = binding.listViewAliments;
         //création de l'objet permettant de modifier la BDD
         alimentsOperations = new AlimentsOperations(getContext());
         // On stocke dans le vecteur "lAlimentss" la liste des aliments

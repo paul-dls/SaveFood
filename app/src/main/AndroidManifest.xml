@@ -17,14 +17,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFridge">
         <activity
+            android:name=".ui.home.AjoutAliment"
+            android:exported="false" />
+        <activity
             android:name=".Page_de_garde_Activity"
             android:exported="false" />
         <activity
             android:name=".AjoutManuelActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false"/>
+            android:name=".NavigationDrawerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_navigation_drawer"
+            android:theme="@style/Theme.MyFridge.NoActionBar" />
         <activity
             android:name=".getInfoActivity"
             android:exported="false" />
@@ -35,10 +40,8 @@
             android:name=".ScannerDateActivity"
             android:exported="false" />
         <activity
-            android:name=".NavigationDrawerActivity"
-            android:exported="true"
-            android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/Theme.MyFridge.NoActionBar">
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.myfridge.ui.home.AjoutAliment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,9 +25,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class getInfoActivity extends AppCompatActivity {
-    String codebarre;
-    String nomProduit;
-    String dateAjout;
+    //String codebarre;
+    //String nomProduit;
+    //String dateAjout;
     String datePeremption;
 
     @Override
@@ -35,9 +36,10 @@ public class getInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_get_info);
 
         //recupération du code barre
-        Intent deMainActivity = getIntent();
-        codebarre = deMainActivity.getStringExtra("codebarre");
+        //Intent deMainActivity = getIntent();
+        //codebarre = deMainActivity.getStringExtra("codebarre");
 
+        /*
         //requête internet pour trouver le nom du produit
         String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -46,14 +48,18 @@ public class getInfoActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
         requestQueue.add(stringRequest);
 
+
+
         // récupération date d'ajout
         Calendar calendrier=Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM -yyyy");
         dateAjout= df.format(calendrier.getTime());
         Log.i("fonctionnement normal", "date d'ajout récupérée");
+
+        */
     }
     //récupération de la date de péremption entrée par l'utilisateur et de la date d'ajout du produit, pour la transmettre à la BDD
-    public void ajouterDate(View view) {
+    public void ajouterDatePeremption(View view) {
 
         //récupération de la date de péremption
         DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.datePicker1); // initiate a date picker
@@ -64,18 +70,41 @@ public class getInfoActivity extends AppCompatActivity {
         datePeremption= day + "-" +month + "-"+year;
         Log.i("fonctionnement normal", "date de péremption récupérée");
 
+        Intent versAjoutAliment = new Intent();
+        versAjoutAliment.setClass(this, AjoutAliment.class);
+        versAjoutAliment.putExtra("DatePeremption", datePeremption);
+        startActivity(versAjoutAliment);
+
+        /*
         //affichage données du produit
         TextView textView = findViewById(R.id.nomProduit);
-        textView.setText("nom du Produit: " + nomProduit +"\n" + "Date de l'ajout: " + dateAjout + "\n" + "date de péremption: " + datePeremption);
+        textView.setText("codebarre: " + codebarre + "nom du Produit: " + nomProduit + "\n" + "Date de l'ajout: " + dateAjout + "\n" + "date de péremption: " + datePeremption);
 
 
         //Ajout de l'aliment dans la base de données
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
         alimentsOperations.open();
-        alimentsOperations.addAliments(new Aliments(Integer.valueOf(codebarre),nomProduit,dateAjout));
+        Log.i("getInfo","ouverture BDD");
+        alimentsOperations.addAliments(new Aliments(codebarre,nomProduit,dateAjout));
+        Log.i("getInfo","ajout Aliment");
         alimentsOperations.close();
+        Log.i("getInfo","fermeture BDD");
+
+         */
+
+        /*
+        //retour Home
+        Intent versHome= new Intent();
+        versHome.setClass(this,NavigationDrawerActivity.class);
+        startActivity(versHome);
+        */
+
     }
 
+
+
+
+    /*
     private class urlResponseListener implements Response.Listener<String> {
         @Override
         public void onResponse(String response) {
@@ -103,4 +132,6 @@ public class getInfoActivity extends AppCompatActivity {
 
         }
     }
+
+     */
 }

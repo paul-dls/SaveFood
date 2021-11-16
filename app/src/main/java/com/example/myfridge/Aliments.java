@@ -2,18 +2,18 @@ package com.example.myfridge;
 
 //création entité aliments
 public class Aliments {
-    private int id;
+    private String id;
     private String nom_produit;
     private String date_ajout;
 
-    public Aliments(int id, String nom_produit, String date_ajout) {
+    public Aliments(String id, String nom_produit, String date_ajout) {
         this.nom_produit = nom_produit;
         this.date_ajout = date_ajout;
         this.id=id;
     }
 
     //création setter et getter
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public void setNom_produit(String nom_produit){
@@ -23,7 +23,7 @@ public class Aliments {
         this.date_ajout = date_ajout;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

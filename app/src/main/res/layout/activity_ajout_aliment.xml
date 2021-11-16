@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.AjoutAliment">
+
+    <Button
+        android:id="@+id/boutonScanCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ScanCodebarre"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/boutonCodeManuel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="EntreeCodeManuel"
+        android:text="Button" />
+
+    <EditText
+        android:id="@+id/editTextCodebarre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Nom du produit" />
+
+    <Button
+        android:id="@+id/boutonScanDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ScanDate"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/boutonDateManuel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="entreeDateManuel"
+        android:text="Button" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="date de péremption" />
+
+    <Button
+        android:id="@+id/boutonNewProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="AjouterProduit"
+        android:text="Ajouter Produit" />
+</LinearLayout>
