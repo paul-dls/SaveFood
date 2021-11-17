@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class AjoutManuelActivity extends AppCompatActivity {
     String codebarre;
     String nomProduit;
-    Aliments aliment = new Aliments();
+    private Aliments aliment = new Aliments();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +87,9 @@ public class AjoutManuelActivity extends AppCompatActivity {
 
         aliment.setId(codebarre);
         aliment.setNom_produit(nomProduit);
-        Intent versAjoutAlimentActivity = new Intent();
-        versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
-        versAjoutAlimentActivity.putExtra("aliment",aliment);
-        startActivity(versAjoutAlimentActivity);
+        Intent versAjoutAliment = new Intent();
+        versAjoutAliment.setClass(this, AjoutAliment.class);
+        versAjoutAliment.putExtra("aliment",aliment);
+        startActivity(versAjoutAliment);
     }
 }

@@ -33,6 +33,7 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
     private SurfaceView cameraView;
     private TextView txtView;
     private CameraSource cameraSource;
+    private Aliments aliment = new Aliments();
 
     @SuppressLint("MissingPermission")
     @Override
@@ -57,6 +58,8 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
         super.onCreate(savedInstanceState);
 
 
+        Intent deScanActivity = getIntent();
+        aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
 
         setContentView(R.layout.activity_scanner_date);
         cameraView = findViewById(R.id.surface_view);
@@ -156,11 +159,12 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                     rawDateString = m.group();
                     try {
                         Date datePeremption = format.parse(rawDateString);
+
+                        aliment.setDate_peremption(datePeremption.toString());
                         Intent versAjoutAliment = new Intent();
-                        versAjoutAliment.setClass(getBaseContext(), AjoutAlimentDate.class);
-                        versAjoutAliment.putExtra("DatePeremption", rawDateString);
+                        versAjoutAliment.setClass(this, AjoutAliment.class);
+                        versAjoutAliment.putExtra("aliment",aliment);
                         startActivity(versAjoutAliment);
-                        txtView.setText(rawDateString);
                     } catch (ParseException e) {
                         Log.i("erreur date paul", String.format("la date %s n'es pas valable", rawDateString));
                         Log.i("erreur date paul", String.valueOf(e));
