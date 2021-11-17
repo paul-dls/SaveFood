@@ -9,6 +9,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 
 public class Notification_Activity extends AppCompatActivity {
 
@@ -42,5 +44,12 @@ public class Notification_Activity extends AppCompatActivity {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
         NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(this);
 
+        //ici on envoie la notif après un certain temps : duree
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                notificationManager.notify(1, builder.build());
+            }
+        },duree);
     }
 }
