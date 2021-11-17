@@ -29,6 +29,7 @@ public class getInfoActivity extends AppCompatActivity {
     //String nomProduit;
     //String dateAjout;
     String datePeremption;
+    Aliments aliment = new Aliments();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +71,10 @@ public class getInfoActivity extends AppCompatActivity {
         datePeremption= day + "-" +month + "-"+year;
         Log.i("fonctionnement normal", "date de péremption récupérée");
 
-        Intent versAjoutAliment = new Intent();
-        versAjoutAliment.setClass(this, AjoutAlimentDate.class);
-        versAjoutAliment.putExtra("DatePeremption", datePeremption);
-        startActivity(versAjoutAliment);
+        Intent versAjoutAlimentActivity = new Intent();
+        versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+        versAjoutAlimentActivity.putExtra("aliment",aliment);
+        startActivity(versAjoutAlimentActivity);
 
         /*
         //affichage données du produit

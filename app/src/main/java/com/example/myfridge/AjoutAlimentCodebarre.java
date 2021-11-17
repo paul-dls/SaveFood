@@ -21,8 +21,8 @@ import org.json.JSONObject;
 
 public class AjoutAlimentCodebarre extends AppCompatActivity {
     String codebarre;
-    String datePeremption;
     String nomProduit;
+    Aliments aliment = new Aliments();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +31,10 @@ public class AjoutAlimentCodebarre extends AppCompatActivity {
 
         //récuparation codebarre par scan
         Intent deScanActivity = getIntent();
-        codebarre=deScanActivity.getStringExtra("codebarre");
+        aliment=deScanActivity.getStringExtra("codebarre");
         // nomProduit=deScanActivity.getStringExtra("NomProduit");
 
         //récupération codebarre manuelle
-        Intent deAjoutManuelActivity = getIntent();
-        codebarre=deAjoutManuelActivity.getStringExtra("codebarre");
         // nomProduit=deAjoutManuelActivity.getStringExtra("NomProduit");
 
         //requête internet pour trouver le nom du produit
@@ -83,11 +81,15 @@ public class AjoutAlimentCodebarre extends AppCompatActivity {
 
     public void AjouterProduit(View view) {
         //transfert vers l'activité pour récupérer les dates
-        Intent versAjoutAlimentDate = new Intent();
-        versAjoutAlimentDate.setClass(this, AjoutAlimentDate.class);
-        versAjoutAlimentDate.putExtra("codebarre",codebarre);
-        versAjoutAlimentDate.putExtra("NomProduit", nomProduit);
-        startActivity(versAjoutAlimentDate);
+
+        aliment.setId(codebarre);
+        aliment.setNom_produit(nomProduit);
+
+
+        Intent versAjoutAlimentActivity = new Intent();
+        versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+        versAjoutAlimentActivity.putExtra("aliment",aliment);
+        startActivity(versAjoutAlimentActivity);
     }
 
     public void EntreeCodeManuel(View view) {

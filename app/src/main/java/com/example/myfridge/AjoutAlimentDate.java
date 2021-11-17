@@ -19,6 +19,7 @@ public class AjoutAlimentDate extends AppCompatActivity {
     String datePeremption;
     String nomProduit;
     int quantite;
+    Aliments aliment= new Aliments();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,8 @@ public class AjoutAlimentDate extends AppCompatActivity {
         dateAjout= df.format(calendrier.getTime());
         Log.i("fonctionnement normal", "date d'ajout récupérée");
 
-        Intent deAjoutAlimentCodebarre = getIntent();
-        codebarre = deAjoutAlimentCodebarre.getStringExtra("codebarre");
-        nomProduit=deAjoutAlimentCodebarre.getStringExtra("NomProduit");
+        Intent deScanActivity = getIntent();
+        aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
         Toast.makeText(this, nomProduit + "\n"+ codebarre, Toast.LENGTH_SHORT).show();
 
         //récupération date de péremption manuelle
@@ -75,9 +75,10 @@ public class AjoutAlimentDate extends AppCompatActivity {
         alimentsOperations.close();
         Log.i("getInfo","fermeture BDD");
 
-        Intent versMainActvity = new Intent();
-        versMainActvity.setClass(this, MainActivity.class);
-        startActivity(versMainActvity);
+        Intent versAjoutAlimentActivity = new Intent();
+        versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+        versAjoutAlimentActivity.putExtra("aliment",aliment);
+        startActivity(versAjoutAlimentActivity);
 
     }
 }

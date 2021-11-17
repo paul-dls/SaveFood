@@ -23,8 +23,12 @@ import org.json.JSONObject;
 public class ScanActivity extends AppCompatActivity {
     String codebarre;
     String nomProduit;
+    Aliments aliment = new Aliments();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent deScanActivity = getIntent();
+        aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
@@ -99,11 +103,13 @@ public class ScanActivity extends AppCompatActivity {
                 codebarre = Result.getContents();
                 Toast.makeText(this, codebarre, Toast.LENGTH_SHORT).show();
 
-                Intent VersAjoutAliment = new Intent();
-                VersAjoutAliment.setClass(getBaseContext(), AjoutAlimentCodebarre.class);
-                VersAjoutAliment.putExtra("codebarre",codebarre);
-                //VersAjoutAliment.putExtra("nomProduit",nomProduit);
-                startActivity(VersAjoutAliment);
+                aliment.setId(codebarre);
+                aliment.setNom_produit(nomProduit);
+
+                Intent versAjoutAlimentActivity = new Intent();
+                versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+                versAjoutAlimentActivity.putExtra("aliment",aliment);
+                startActivity(versAjoutAlimentActivity);
 
             }
         } else {

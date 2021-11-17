@@ -22,6 +22,7 @@ import org.json.JSONObject;
 public class AjoutManuelActivity extends AppCompatActivity {
     String codebarre;
     String nomProduit;
+    Aliments aliment = new Aliments();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +82,12 @@ public class AjoutManuelActivity extends AppCompatActivity {
     public void EntreeCodebarre(View view) {
         EditText editCodebarre = findViewById(R.id.editCodebarre);
         codebarre = editCodebarre.getText().toString();
-        Intent versAjoutAliment = new Intent();
-        versAjoutAliment.setClass(this, AjoutAlimentCodebarre.class);
-        versAjoutAliment.putExtra("codebarre",codebarre);
-        //versAjoutAliment.putExtra("NomProduit",nomProduit);
-        startActivity(versAjoutAliment);
+
+        aliment.setId(codebarre);
+        aliment.setNom_produit(nomProduit);
+        Intent versAjoutAlimentActivity = new Intent();
+        versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+        versAjoutAlimentActivity.putExtra("aliment",aliment);
+        startActivity(versAjoutAlimentActivity);
     }
 }

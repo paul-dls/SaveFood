@@ -1,7 +1,9 @@
 package com.example.myfridge;
 
+import java.io.Serializable;
+
 //création entité aliments
-public class Aliments {
+public class Aliments implements Serializable {
     private String id;
     private String nom_produit;
     private String date_ajout;
@@ -14,6 +16,14 @@ public class Aliments {
         this.id=id;
         this.date_peremption=date_peremption;
         this.quantite=quantite;
+    }
+
+    public Aliments() {
+        this.nom_produit = "non communique";
+        this.date_ajout = "non communique";
+        this.id="non communique";
+        this.date_peremption=null;
+        this.quantite=0;
     }
 
     //création setter et getter
