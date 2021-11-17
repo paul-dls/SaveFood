@@ -65,8 +65,8 @@ public class ScannerCodeBarreActivity extends AppCompatActivity {
                 versAjoutAlimentActivity.setClass(getBaseContext(), AjoutAliment.class);
                 versAjoutAlimentActivity.putExtra("aliment",aliment);
                 startActivity(versAjoutAlimentActivity);
+                finish();
 
-                Log.i("test", "affiche nom Produit");
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.i("test", e.toString());

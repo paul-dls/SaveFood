@@ -79,6 +79,7 @@ public class AjoutManuelDateActivity extends AppCompatActivity {
         versAjoutAliment.setClass(this, AjoutAliment.class);
         versAjoutAliment.putExtra("aliment",aliment);
         startActivity(versAjoutAliment);
+        finish();
 
         /*
         //affichage données du produit

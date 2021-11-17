@@ -46,7 +46,7 @@
             android:name=".ScannerDateActivity"
             android:exported="false" />
         <activity
-            android:name=".Notification_Activity"
+            android:name=".Notification"
             android:exported="false"/>
         <activity
             android:name=".MainActivity"

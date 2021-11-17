@@ -163,7 +163,7 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                     try {
                         Date datePeremption = format.parse(rawDateString);
 
-                        aliment.setDate_peremption(datePeremption.toString());
+                        aliment.setDate_peremption(rawDateString);
                         versAjoutAliment = new Intent();
                         versAjoutAliment.setClass(getBaseContext(), AjoutAliment.class);
                         versAjoutAliment.putExtra("aliment",aliment);

@@ -1,8 +1,10 @@
 package com.example.myfridge;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +48,7 @@ public class AjoutAliment extends AppCompatActivity {
         versScanActvity.putExtra("aliment", (Serializable) aliment);
         startActivity(versScanActvity);
         Log.i("erreur intent paul","lancement scan code barre");
+        finish();
     }
 
     public void EntreeCodeManuel(View view) {
@@ -53,8 +56,10 @@ public class AjoutAliment extends AppCompatActivity {
         versAjoutManuel.setClass(this, AjoutManuelCodeBarreActivity.class);
         versAjoutManuel.putExtra("aliment", (Serializable) aliment);
         startActivity(versAjoutManuel);
+        finish();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void AjouterAlimentBDD(View view) {
         EditText editQuantite =findViewById(R.id.editTextQuantite);
         quantite = (int) Integer.parseInt(editQuantite.getText().toString());
@@ -67,9 +72,12 @@ public class AjoutAliment extends AppCompatActivity {
         alimentsOperations.close();
         Log.i("getInfo","fermeture BDD");
 
+        Notification.envoyerNotif(aliment, this);
+
         Intent versMainActvity = new Intent();
         versMainActvity.setClass(this, MainActivity.class);
         startActivity(versMainActvity);
+        finish();
     }
 
     public void ScanDate(View view) {
@@ -77,6 +85,7 @@ public class AjoutAliment extends AppCompatActivity {
         versScannerDateActivity.setClass(this, ScannerDateActivity.class);
         versScannerDateActivity.putExtra("aliment", (Serializable) aliment);
         startActivity(versScannerDateActivity);
+        finish();
     }
 
     public void EntreeManuelleDate(View view) {
@@ -84,5 +93,6 @@ public class AjoutAliment extends AppCompatActivity {
         versgetInfo.setClass(this, AjoutManuelDateActivity.class);
         versgetInfo.putExtra("aliment", (Serializable) aliment);
         startActivity(versgetInfo);
+        finish();
     }
 }

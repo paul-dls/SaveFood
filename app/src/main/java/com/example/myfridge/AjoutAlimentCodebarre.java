@@ -43,7 +43,7 @@ public class AjoutAlimentCodebarre extends AppCompatActivity {
         Response.ErrorListener responseErrorListener = new AjoutAlimentCodebarre.urlResponseErrorListener();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
         requestQueue.add(stringRequest);
-
+        finish();
     }
 
 
@@ -89,18 +89,20 @@ public class AjoutAlimentCodebarre extends AppCompatActivity {
         versAjoutAlimentActivity.setClass(this, AjoutAliment.class);
         versAjoutAlimentActivity.putExtra("aliment",aliment);
         startActivity(versAjoutAlimentActivity);
+        finish();
     }
 
-    public void EntreeCodeManuel(View view) {
+    /*public void EntreeCodeManuel(View view) {
         Intent versAjoutManuel = new Intent();
         versAjoutManuel.setClass(this, AjoutManuelCodeBarreActivity.class);
         startActivity(versAjoutManuel);
+        finish();
     }
 
     public void ScanCodebarre(View view) {
         Intent versScanActvity = new Intent();
         versScanActvity.setClass(this, ScannerCodeBarreActivity.class);
         startActivity(versScanActvity);
-
-    }
+        finish();
+    }*/
 }
