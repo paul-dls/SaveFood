@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.Serializable;
 
@@ -29,6 +30,12 @@ public class AjoutAliment extends AppCompatActivity {
         aliment= (Aliments) deAjoutManuelActivity.getSerializableExtra("aliment");
 
      */
+        //affichage contenu aliment
+        TextView textNomProduit = findViewById(R.id.TextNomProduit);
+        textNomProduit.setText(aliment.getNom_produit());
+        TextView textDatePeremption = findViewById(R.id.TextDatePeremption);
+        textDatePeremption.setText(aliment.getDate_peremption());
+
     }
 
     public void ScanCodebarre(View view) {
@@ -54,8 +61,6 @@ public class AjoutAliment extends AppCompatActivity {
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
         alimentsOperations.open();
         Log.i("getInfo","ouverture BDD");
-
-
         alimentsOperations.addAliments(aliment);
         Log.i("getInfo","ajout Aliment");
         alimentsOperations.close();
