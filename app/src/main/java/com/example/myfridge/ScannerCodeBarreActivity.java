@@ -58,7 +58,13 @@ public class ScannerCodeBarreActivity extends AppCompatActivity {
                 Log.i("test", "recupère JSON product");
                 nomProduit = product.getString("product_name");
                 Log.i("test", "nomProduit");
+                aliment.setId(codebarre);
+                aliment.setNom_produit(nomProduit);
 
+                Intent versAjoutAlimentActivity = new Intent();
+                versAjoutAlimentActivity.setClass(getBaseContext(), AjoutAliment.class);
+                versAjoutAlimentActivity.putExtra("aliment",aliment);
+                startActivity(versAjoutAlimentActivity);
 
                 Log.i("test", "affiche nom Produit");
             } catch (JSONException e) {
@@ -96,13 +102,6 @@ public class ScannerCodeBarreActivity extends AppCompatActivity {
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
                 requestQueue.add(stringRequest);
 
-                aliment.setId(codebarre);
-                aliment.setNom_produit(nomProduit);
-
-                Intent versAjoutAlimentActivity = new Intent();
-                versAjoutAlimentActivity.setClass(getBaseContext(), AjoutAliment.class);
-                versAjoutAlimentActivity.putExtra("aliment",aliment);
-                startActivity(versAjoutAlimentActivity);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
