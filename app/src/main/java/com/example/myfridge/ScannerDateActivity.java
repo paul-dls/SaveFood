@@ -174,7 +174,6 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                         Log.i("erreur date paul", String.format("la date %s n'es pas valable", rawDateString));
                         Log.i("erreur date paul", String.valueOf(e));
                     }
-
                 }
 
             }
