@@ -5,11 +5,15 @@ public class Aliments {
     private String id;
     private String nom_produit;
     private String date_ajout;
+    private int quantite;
+    private String date_peremption;
 
-    public Aliments(String id, String nom_produit, String date_ajout) {
+    public Aliments(String id, String nom_produit, String date_ajout,String date_peremption,int quantite) {
         this.nom_produit = nom_produit;
         this.date_ajout = date_ajout;
         this.id=id;
+        this.date_peremption=date_peremption;
+        this.quantite=quantite;
     }
 
     //création setter et getter
@@ -23,6 +27,14 @@ public class Aliments {
         this.date_ajout = date_ajout;
     }
 
+    public void setDate_peremption(String date_peremption) {
+        this.date_peremption = date_peremption;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
     public String getId() {
         return id;
     }
@@ -33,5 +45,13 @@ public class Aliments {
 
     public String getDate_ajout() {
         return date_ajout;
+    }
+
+    public String getDate_peremption() {
+        return date_peremption;
+    }
+
+    public int getQuantite() {
+        return quantite;
     }
 }

@@ -12,12 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="ScanDate"
+        android:layout_marginBottom="10dp"
         android:text="Scanner la date de péremption" />
 
     <Button
         android:id="@+id/boutonDateManuel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:onClick="EntreeManuelleDate"
         android:text="Entrée manuelle de la date de péremption" />
 
@@ -26,8 +28,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginBottom="10dp"
         android:inputType="textPersonName"
         android:hint="date de péremption" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewQuantite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Quantite" />
+
+        <EditText
+            android:id="@+id/editTextQuantite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/boutonEntree"

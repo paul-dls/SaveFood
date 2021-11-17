@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private AlimentsOperations alimentsOperations;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i("bug BDD","entre dans le onCreate de main");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

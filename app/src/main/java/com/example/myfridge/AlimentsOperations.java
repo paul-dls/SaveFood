@@ -14,6 +14,7 @@ public class AlimentsOperations {
     //le constructeur
     public AlimentsOperations(Context context){dbHelper = new DatabaseHelper(context);}
 
+
     // creation de la base de données avec accès lecture et écriture
     public void open(){
         database = dbHelper.getWritableDatabase();
@@ -34,6 +35,8 @@ public class AlimentsOperations {
         valeurs.put(dbHelper.getId(),a.getId());
         valeurs.put(dbHelper.getNom_Produit(), a.getNom_produit());
         valeurs.put(dbHelper.getDate_Ajout(), a.getDate_ajout());
+        valeurs.put(dbHelper.getDate_Peremption(),a.getDate_peremption());
+        valeurs.put(dbHelper.getQuantite(),a.getQuantite());
 
         // Insertion de l'enregistrement dans la table "contacts"
         long AlimentId = database.insert(dbHelper.getTableAliments(),
@@ -46,7 +49,7 @@ public class AlimentsOperations {
     //Affichage des aliments contenus dans la table "aliments"
     public Vector<Aliments> listAllAliments() {
 
-        String tabColonne[] = new String [3];
+        String tabColonne[] = new String [5];
         Vector<Aliments> lAliments = new Vector<Aliments>();
 
         // La requête renvoie l’id, le nom et le numéro de téléphone des
@@ -54,6 +57,8 @@ public class AlimentsOperations {
         tabColonne[0] = dbHelper.getId();
         tabColonne[1] = dbHelper.getNom_Produit();
         tabColonne[2] = dbHelper.getDate_Ajout();
+        tabColonne[3] = dbHelper.getDate_Peremption();
+        tabColonne[4] = dbHelper.getQuantite();
 
         // On exécute la requête. Le résultat est stocké dans la variable
         // cursor.
@@ -70,13 +75,17 @@ public class AlimentsOperations {
                 cursor.getColumnIndexOrThrow(dbHelper.getNom_Produit());
         int numeroColonneDate_Ajout =
                 cursor.getColumnIndexOrThrow(dbHelper.getDate_Ajout());
+        int numeroColonneDate_Peremption = cursor.getColumnIndexOrThrow(dbHelper.getDate_Peremption());
+        int numeroColonneQuantite = cursor.getColumnIndexOrThrow(dbHelper.getQuantite());
         if (cursor.moveToFirst() == true) {
             do {
                 String id = cursor.getString(numeroColonneId);
                 String nom_produit = cursor.getString(numeroColonneNom_Produit);
                 String date_ajout =
                         cursor.getString(numeroColonneDate_Ajout);
-                Aliments c = new Aliments(id,nom_produit,date_ajout);
+                String date_peremption = cursor.getString(numeroColonneDate_Peremption);
+                int quantite = cursor.getInt(numeroColonneQuantite);
+                Aliments c = new Aliments(id,nom_produit,date_ajout,date_peremption,quantite);
                 lAliments.add(c);
             } while (cursor.moveToNext());
         }
