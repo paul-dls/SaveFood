@@ -6,23 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.TextView;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class AjoutManuelDateActivity extends AppCompatActivity {
     //String codebarre;
@@ -34,7 +18,7 @@ public class AjoutManuelDateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_info);
+        setContentView(R.layout.activity_ajout_manuel_date_activity);
 
         Intent deScanActivity = getIntent();
         aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");

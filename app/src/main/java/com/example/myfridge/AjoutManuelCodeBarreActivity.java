@@ -28,7 +28,7 @@ public class AjoutManuelCodeBarreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ajout_manuel);
+        setContentView(R.layout.activity_ajout_manuel_code_barre);
 
         Intent deScanActivity = getIntent();
         aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
