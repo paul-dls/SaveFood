@@ -11,7 +11,7 @@
         android:id="@+id/boutonScanCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FF9800"
+        android:backgroundTint="#1F39C8"
         android:onClick="ScanCodebarre"
         android:text="scan du code barre" />
 
@@ -19,7 +19,7 @@
         android:id="@+id/boutonCodeManuel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#E91E63"
+        android:backgroundTint="#59A3DD"
         android:onClick="EntreeCodeManuel"
         android:text="Entrée manuelle du codebarre" />
 
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#FF9800"
+        android:backgroundTint="#1F39C8"
         android:onClick="ScanDate"
         android:text="Scanner la date de péremption" />
 
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#E91E63"
+        android:backgroundTint="#59A3DD"
         android:onClick="EntreeManuelleDate"
         android:text="Entrée manuelle de la date de péremption" />
 
