@@ -3,12 +3,13 @@ package com.example.myfridge;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
     // Version de la base de données
     private static final int VERSION_BASE_DE_DONNEES = 2;
     // Nom du fichier contenant la base de données
-    private static final String NOM_BASE_DE_DONNEES = "aliments.db";
+    private static final String NOM_BASE_DE_DONNEES = "Aliments.db";
     // Nom de la table qui sera créée dans la base de données
     private static final String TABLE_ALIMENTS = "aliments";
     // Les champs de la table
@@ -45,6 +46,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(REQUETE_CREATION_TABLE);
+        Log.i("erreur BDD Antonine", "appel onCreate de dataBaseHelper");
+    }
+
+    public void onReCreate(SQLiteDatabase db) {
+        db.execSQL(REQUETE_SUPPRESSION_TABLE);
+        onCreate(db);
+        Log.i("erreur BDD Antonine", "appel onCreate de dataBaseHelper");
     }
 
     /*

@@ -20,34 +20,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //affichage de la liste des aliments de la BDD dans le listView
-        ListView listViewAliment = findViewById(R.id.listViewAliments);
-        //création de l'objet permettant de modifier la BDD
-        alimentsOperations = new AlimentsOperations(this);
-        // On stocke dans le vecteur "lAlimentss" la liste des aliments
-        // contenus dans la table "aliments" de la base de données
-        Vector<Aliments> lAliments;
-        alimentsOperations.open();
-        lAliments = alimentsOperations.listAllAliments();
-        alimentsOperations.close();
 
-        // On associe au modèle de la ListView le vecteur de contacts
-        // "lContacts"
-        if (lAliments != null) {
-            String[] anArrayString = new String[lAliments.size()];
-            for (int i = 0; i < lAliments.size(); i++) {
-                String s = lAliments.get(i).getId() + " - " +
-                        lAliments.get(i).getNom_produit() + " : " +
-                        lAliments.get(i).getDate_ajout();
-                anArrayString[i] = s;
+
+
+        try {
+            //affichage de la liste des aliments de la BDD dans le listView
+            ListView listViewAliment = findViewById(R.id.listViewAliments);
+            //création de l'objet permettant de modifier la BDD
+            alimentsOperations = new AlimentsOperations(this);
+            // On stocke dans le vecteur "lAlimentss" la liste des aliments
+            // contenus dans la table "aliments" de la base de données
+            Vector<Aliments> lAliments;
+            alimentsOperations.open();
+            //alimentsOperations.vider();
+
+            lAliments = alimentsOperations.listAllAliments();
+            alimentsOperations.close();
+
+            // On associe au modèle de la ListView le vecteur de contacts
+            // "lContacts"
+            if (lAliments != null) {
+                String[] anArrayString = new String[lAliments.size()];
+                for (int i = 0; i < lAliments.size(); i++) {
+                    String s = lAliments.get(i).getId() + " - " +
+                            lAliments.get(i).getNom_produit() + " : " +
+                            lAliments.get(i).getDate_ajout();
+                    anArrayString[i] = s;
+                }
+                ArrayAdapter<String> listArrayAdapter =
+                        new ArrayAdapter<String>(this,
+                                android.R.layout.simple_list_item_1,
+                                anArrayString);
+                listViewAliment.setAdapter(listArrayAdapter);
             }
-            ArrayAdapter<String> listArrayAdapter =
-                    new ArrayAdapter<String>(this,
-                            android.R.layout.simple_list_item_1,
-                            anArrayString);
-            listViewAliment.setAdapter(listArrayAdapter);
+        }catch(Exception e){
+            Log.i("erreur BDD antonine", e.toString());
         }
-
 
     }
 

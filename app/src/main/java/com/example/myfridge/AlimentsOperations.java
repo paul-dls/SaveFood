@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.Vector;
 
@@ -14,6 +15,12 @@ public class AlimentsOperations {
     //le constructeur
     public AlimentsOperations(Context context){dbHelper = new DatabaseHelper(context);}
 
+    // réinitialiser BDD
+    public void vider(){
+        //database.execSQL("DELETE FROM aliments");
+        dbHelper.onReCreate(database);
+        Log.i("erreur BDD Antonine ", database.toString());
+    }
 
     // creation de la base de données avec accès lecture et écriture
     public void open(){
