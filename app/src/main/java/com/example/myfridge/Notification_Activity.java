@@ -7,38 +7,60 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class Notification_Activity extends AppCompatActivity {
 
+    private Aliments aliment;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+        Log.i("normal paul date", "oncreate appele");
 
-        int duree;
+        Intent nouvelleNotif = getIntent();
+        aliment = (Aliments) nouvelleNotif.getSerializableExtra("aliment");
+
+        long duree;
 
         //ajouter date d'expiration
-        String date_expi;
-        date_expi="19-11-2021";
-        SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String date_now = sdf(new Date());
+        Date date_expi;
 
-        duree.printDifference(date_now,date_expi);
-        notif (duree);
+        SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String date_now = sdf.format(new Date());
+        try{
+            Date date_actuelle = sdf.parse(date_now);
+            date_expi = sdf.parse(aliment.getDate_peremption);
+
+            duree= Math.abs(date_expi.getTime() - date_actuelle.getTime());
+            Log.i("normal paul date", "duree : "+ String.valueOf(duree));
+            notif(duree+30000);
+
+        }catch(ParseException e){
+            Log.i("erreur paul date",e.toString());
+            duree = 0;
+        }
+
+
     }
 
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void notif(int duree) {
+    public void notif(long duree) {
 
         // création du channel pour envoyer les notifs
         CharSequence name = "Péremption";
@@ -55,7 +77,7 @@ public class Notification_Activity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"channel1")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle("Savefood")
-                .setContentText("Aliment blablabla va expirer dans tant de temps, veuillez le consommer rapidement.")
+                .setContentText(String.format("%s va expirer dans tant de temps, veuillez le consommer rapidement.",aliment.getNom_produit()))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
         NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(this);
 
@@ -66,5 +88,6 @@ public class Notification_Activity extends AppCompatActivity {
                 notificationManager.notify(1, builder.build());
             }
         },duree);
+
     }
 }
