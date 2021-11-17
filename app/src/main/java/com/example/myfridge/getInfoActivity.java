@@ -29,7 +29,7 @@ public class getInfoActivity extends AppCompatActivity {
     //String nomProduit;
     //String dateAjout;
     String datePeremption;
-    private Aliments aliment = new Aliments();
+    private Aliments aliment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

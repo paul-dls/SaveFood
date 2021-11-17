@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class AjoutManuelActivity extends AppCompatActivity {
     String codebarre;
     String nomProduit;
-    private Aliments aliment = new Aliments();
+    private Aliments aliment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

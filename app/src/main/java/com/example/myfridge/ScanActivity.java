@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class ScanActivity extends AppCompatActivity {
     String codebarre;
     String nomProduit;
-    Aliments aliment = new Aliments();
+    Aliments aliment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent deScanActivity = getIntent();

@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AjoutAlimentDate extends AppCompatActivity {
-    String codebarre;
+    /*String codebarre;
     String dateAjout;
     String datePeremption;
     String nomProduit;
@@ -78,7 +78,7 @@ public class AjoutAlimentDate extends AppCompatActivity {
         Intent versAjoutAlimentActivity = new Intent();
         versAjoutAlimentActivity.setClass(this, AjoutAliment.class);
         versAjoutAlimentActivity.putExtra("aliment",aliment);
-        startActivity(versAjoutAlimentActivity);
+        startActivity(versAjoutAlimentActivity);*/
 
     }
 }
