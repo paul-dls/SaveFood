@@ -24,6 +24,7 @@ public class AjoutAliment extends AppCompatActivity {
         //récuparation codebarre aliment par scan
         Intent deScanActivity = getIntent();
         aliment = (Aliments) deScanActivity.getSerializableExtra("aliment");
+        aliment.description();
     /*
         //récupération codebarre aliment manuelle
         Intent deAjoutManuelActivity = getIntent();

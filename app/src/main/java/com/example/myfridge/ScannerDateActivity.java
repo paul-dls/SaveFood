@@ -34,6 +34,7 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
     private TextView txtView;
     private CameraSource cameraSource;
     private Aliments aliment;
+    private Intent versAjoutAliment;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -156,21 +157,24 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
                 //to do, utiliser un while et cecker plusieurs date si la premiere declanche une erreur
-                if (m.find()) {
+                if (m.find() && versAjoutAliment == null) {
                     Log.v("normal date paul","au moins un mot du format date trouvé");
                     rawDateString = m.group();
                     try {
                         Date datePeremption = format.parse(rawDateString);
 
                         aliment.setDate_peremption(datePeremption.toString());
-                        Intent versAjoutAliment = new Intent();
+                        versAjoutAliment = new Intent();
                         versAjoutAliment.setClass(getBaseContext(), AjoutAliment.class);
                         versAjoutAliment.putExtra("aliment",aliment);
                         startActivity(versAjoutAliment);
+                        finish();
+
                     } catch (ParseException e) {
                         Log.i("erreur date paul", String.format("la date %s n'es pas valable", rawDateString));
                         Log.i("erreur date paul", String.valueOf(e));
                     }
+
                 }
 
             }

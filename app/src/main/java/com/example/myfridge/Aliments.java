@@ -1,5 +1,7 @@
 package com.example.myfridge;
 
+import android.util.Log;
+
 import java.io.Serializable;
 
 //création entité aliments
@@ -66,5 +68,10 @@ public class Aliments implements Serializable {
 
     public int getQuantite() {
         return quantite;
+    }
+
+    public void description(){
+        Log.i("erreur paul aliment", getId()+"/"+getDate_ajout()+"/"+getDate_peremption()+"/"+getNom_produit());
+
     }
 }
