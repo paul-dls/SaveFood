@@ -36,6 +36,9 @@ public class getInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_info);
 
+        Intent deScanActivity = getIntent();
+        aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
+
         //recupération du code barre
         //Intent deMainActivity = getIntent();
         //codebarre = deMainActivity.getStringExtra("codebarre");
@@ -72,7 +75,7 @@ public class getInfoActivity extends AppCompatActivity {
         Log.i("fonctionnement normal", "date de péremption récupérée");
 
         Intent versAjoutAlimentActivity = new Intent();
-        versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+        versAjoutAlimentActivity.setClass(this, AjoutAliment.class);
         versAjoutAlimentActivity.putExtra("aliment",aliment);
         startActivity(versAjoutAlimentActivity);
 
