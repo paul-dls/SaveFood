@@ -54,7 +54,7 @@ public class AlimentsOperations {
     }
 
     //Affichage des aliments contenus dans la table "aliments"
-    public Vector<Aliments> listAllAliments() {
+    public Vector<Aliments> listAllAliments(){
 
         String tabColonne[] = new String [5];
         Vector<Aliments> lAliments = new Vector<Aliments>();
@@ -100,5 +100,17 @@ public class AlimentsOperations {
         return lAliments;
     }
 
+    public Vector<String> listeNomAliment() {
+        Vector<String> listeNomAliment = new Vector<String>();
+        Cursor cursor = database.rawQuery("SELECT nom_produit FROM aliments", new String[]{});
+        int numeroColonneNom_Produit = cursor.getColumnIndexOrThrow(dbHelper.getNom_Produit());
+        if (cursor.moveToFirst() == true) {
+            do {
+                String nom_produit = cursor.getString(numeroColonneNom_Produit);
+                listeNomAliment.add(nom_produit);
+            } while (cursor.moveToNext());
+        }
+        return listeNomAliment;
+    }
 }
 

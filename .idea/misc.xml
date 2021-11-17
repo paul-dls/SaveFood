@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ab910/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/ab910/AndroidStudioProjects/MyFridge/app/src/main/res/layout/activity_affichage_frigo.xml" value="0.16041666666666668" />
         <entry key="..\:/Users/ab910/AndroidStudioProjects/MyFridge/app/src/main/res/layout/activity_ajout_aliment.xml" value="0.2234375" />
         <entry key="..\:/Users/ab910/AndroidStudioProjects/MyFridge/app/src/main/res/layout/activity_ajout_aliment_codebarre.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ab910/AndroidStudioProjects/MyFridge/app/src/main/res/layout/activity_ajout_aliment_date.xml" value="0.264" />

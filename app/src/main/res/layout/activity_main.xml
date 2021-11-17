@@ -16,26 +16,26 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonFrigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="AfficherContenuFrigo"
             android:text="Voir le contenu mon frigo" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/boutonProduitsPerimes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Voir les produits bientôt périmés" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/boutonListeCourse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Voir ma liste de course" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/boutonMiseAJourFrigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mettre à jour les produits" />

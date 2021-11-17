@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String REQUETE_SUPPRESSION_TABLE =
             "DROP TABLE IF EXISTS " +
                     TABLE_ALIMENTS + ";";
-
+    private static final String REQUETE_LISTE_NOMS = "SELECT " + NOM_PRODUIT +" FROM " + TABLE_ALIMENTS;
     /*
      * Le constructeur
      */
@@ -54,7 +54,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         onCreate(db);
         Log.i("erreur BDD Antonine", "appel onCreate de dataBaseHelper");
     }
-
     /*
      * Mise à jour de la base de données
      */
@@ -87,4 +86,5 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public String getQuantite() {
         return QUANTITE;
     }
+
 }

@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             lAliments = alimentsOperations.listAllAliments();
             alimentsOperations.close();
 
+
             // On associe au modèle de la ListView le vecteur de contacts
             // "lContacts"
             if (lAliments != null) {
@@ -76,5 +77,11 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(VersAjoutAliment);
         Log.i("scan", "intent vers AjoutAliment");
+    }
+
+    public void AfficherContenuFrigo(View view) {
+        Intent versAffichageFrigo = new Intent();
+        versAffichageFrigo.setClass(this,AffichageFrigoActivity.class);
+        startActivity(versAffichageFrigo);
     }
 }
