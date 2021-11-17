@@ -153,16 +153,16 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                     rawDateString = m.group();
                     try {
                         Date datePeremption = format.parse(rawDateString);
+                        Intent versAjoutAliment = new Intent();
+                        versAjoutAliment.setClass(getBaseContext(), AjoutAlimentDate.class);
+                        versAjoutAliment.putExtra("DatePeremption", rawDateString);
+                        startActivity(versAjoutAliment);
+                        txtView.setText(rawDateString);
                     } catch (ParseException e) {
                         Log.i("erreur date paul", String.format("la date %s n'es pas valable", rawDateString));
                         Log.i("erreur date paul", String.valueOf(e));
                     }
                 }
-                Intent versAjoutAliment = new Intent();
-                versAjoutAliment.setClass(getBaseContext(), AjoutAlimentDate.class);
-                versAjoutAliment.putExtra("DatePeremption", rawDateString);
-                startActivity(versAjoutAliment);
-                txtView.setText(rawDateString);
 
             }
         });
