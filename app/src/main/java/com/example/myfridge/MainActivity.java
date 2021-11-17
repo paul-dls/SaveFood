@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     public void ajouter(View view) {
         Log.i("scan", "rentre dans le onClick");
         Intent VersAjoutAliment= new Intent();
-        VersAjoutAliment.setClass(this, AjoutAlimentCodebarre.class);
+        VersAjoutAliment.setClass(this, AjoutAliment.class);
         VersAjoutAliment.putExtra("message", "ok");
         startActivity(VersAjoutAliment);
         Log.i("scan", "intent vers AjoutAliment");
