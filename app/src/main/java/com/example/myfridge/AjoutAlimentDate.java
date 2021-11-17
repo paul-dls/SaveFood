@@ -81,4 +81,3 @@ public class AjoutAlimentDate extends AppCompatActivity {
         startActivity(versAjoutAlimentActivity);*/
 
     }
-}

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,19 +33,9 @@ public class AjoutManuelActivity extends AppCompatActivity {
         Intent deScanActivity = getIntent();
         aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
 
-        /*
-        //requête internet pour trouver le nom du produit
-        String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Response.Listener<String> responseListener = new AjoutManuelActivity.urlResponseListener();
-        Response.ErrorListener responseErrorListener = new AjoutManuelActivity.urlResponseErrorListener();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
-        requestQueue.add(stringRequest);
-
-         */
     }
 
-    /*
+
     private class urlResponseListener implements Response.Listener<String> {
         @Override
         public void onResponse(String response) {
@@ -57,18 +48,12 @@ public class AjoutManuelActivity extends AppCompatActivity {
                 nomProduit = product.getString("product_name");
                 Log.i("test", "nomProduit");
 
-
+                Toast.makeText(getBaseContext(),nomProduit, Toast.LENGTH_SHORT).show();
                 Log.i("test", "affiche nom Produit");
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.i("test", e.toString());
             }
-
-            Intent VersAjoutAliment = new Intent();
-            VersAjoutAliment.setClass(getBaseContext(), AjoutAlimentCodebarre.class);
-            VersAjoutAliment.putExtra("codebarre",codebarre);
-            //VersAjoutAliment.putExtra("NomProduit",nomProduit);
-            startActivity(VersAjoutAliment);
         }
     }
     private class urlResponseErrorListener implements Response.ErrorListener {
@@ -78,15 +63,22 @@ public class AjoutManuelActivity extends AppCompatActivity {
         }
     }
 
-    */
 
 
     public void EntreeCodebarre(View view) {
         EditText editCodebarre = findViewById(R.id.editCodebarre);
         codebarre = editCodebarre.getText().toString();
 
-        aliment.setId(codebarre);
+        //requête internet pour trouver le nom du produit
+        String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        Response.Listener<String> responseListener = new AjoutManuelActivity.urlResponseListener();
+        Response.ErrorListener responseErrorListener = new AjoutManuelActivity.urlResponseErrorListener();
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
+        requestQueue.add(stringRequest);
+
         aliment.setNom_produit(nomProduit);
+        aliment.setId(codebarre);
         Intent versAjoutAliment = new Intent();
         versAjoutAliment.setClass(this, AjoutAliment.class);
         versAjoutAliment.putExtra("aliment",aliment);

@@ -11,23 +11,28 @@ import android.widget.EditText;
 import java.io.Serializable;
 
 public class AjoutAliment extends AppCompatActivity {
-    Aliments aliment = new Aliments();
+    Aliments aliment ;
     int quantite;
+    String dateAjout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_aliment);
 
+
         //récuparation codebarre aliment par scan
         Intent deScanActivity = getIntent();
         aliment = (Aliments) deScanActivity.getSerializableExtra("aliment");
-
+    /*
         //récupération codebarre aliment manuelle
         Intent deAjoutManuelActivity = getIntent();
         aliment= (Aliments) deAjoutManuelActivity.getSerializableExtra("aliment");
+
+     */
     }
 
     public void ScanCodebarre(View view) {
+
         Intent versScanActvity = new Intent();
         versScanActvity.setClass(this, ScanActivity.class);
         versScanActvity.putExtra("aliment", (Serializable) aliment);

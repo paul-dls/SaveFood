@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i("scan", "rentre dans le onClick");
         Intent VersAjoutAliment= new Intent();
         VersAjoutAliment.setClass(this, AjoutAliment.class);
-        VersAjoutAliment.putExtra("message", "ok");
+        VersAjoutAliment.putExtra("aliment", new Aliments("1","non communiqué","non communiqué","non communiqué",1));
+
         startActivity(VersAjoutAliment);
         Log.i("scan", "intent vers AjoutAliment");
     }

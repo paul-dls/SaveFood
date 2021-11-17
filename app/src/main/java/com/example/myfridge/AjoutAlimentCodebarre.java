@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class AjoutAlimentCodebarre extends AppCompatActivity {
     String codebarre;
     String nomProduit;
-    Aliments aliment = new Aliments();
+    Aliments aliment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

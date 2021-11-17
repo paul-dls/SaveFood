@@ -33,7 +33,7 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
     private SurfaceView cameraView;
     private TextView txtView;
     private CameraSource cameraSource;
-    private Aliments aliment = new Aliments();
+    private Aliments aliment;
 
     @SuppressLint("MissingPermission")
     @Override
