@@ -107,7 +107,7 @@ public class ScanActivity extends AppCompatActivity {
                 aliment.setNom_produit(nomProduit);
 
                 Intent versAjoutAlimentActivity = new Intent();
-                versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+                versAjoutAlimentActivity.setClass(this, AjoutAliment.class);
                 versAjoutAlimentActivity.putExtra("aliment",aliment);
                 startActivity(versAjoutAlimentActivity);
 

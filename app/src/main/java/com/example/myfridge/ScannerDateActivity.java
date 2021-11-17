@@ -55,6 +55,9 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_scanner_date);
         cameraView = findViewById(R.id.surface_view);
         txtView = findViewById(R.id.txtview);

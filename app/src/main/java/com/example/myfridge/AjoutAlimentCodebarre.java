@@ -31,8 +31,7 @@ public class AjoutAlimentCodebarre extends AppCompatActivity {
 
         //récuparation codebarre par scan
         Intent deScanActivity = getIntent();
-        aliment=deScanActivity.getStringExtra("codebarre");
-        // nomProduit=deScanActivity.getStringExtra("NomProduit");
+        aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
 
         //récupération codebarre manuelle
         // nomProduit=deAjoutManuelActivity.getStringExtra("NomProduit");

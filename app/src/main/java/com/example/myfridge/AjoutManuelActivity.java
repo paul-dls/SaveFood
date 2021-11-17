@@ -29,6 +29,8 @@ public class AjoutManuelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_manuel);
 
+        Intent deScanActivity = getIntent();
+        aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
 
         /*
         //requête internet pour trouver le nom du produit
