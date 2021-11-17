@@ -47,7 +47,12 @@ public class AjoutManuelCodeBarreActivity extends AppCompatActivity {
                 Log.i("test", "recupère JSON product");
                 nomProduit = product.getString("product_name");
                 Log.i("test", "nomProduit");
-
+                aliment.setNom_produit(nomProduit);
+                aliment.setId(codebarre);
+                Intent versAjoutAliment = new Intent();
+                versAjoutAliment.setClass(getBaseContext(), AjoutAliment.class);
+                versAjoutAliment.putExtra("aliment",aliment);
+                startActivity(versAjoutAliment);
                 Toast.makeText(getBaseContext(),nomProduit, Toast.LENGTH_SHORT).show();
                 Log.i("test", "affiche nom Produit");
             } catch (JSONException e) {
@@ -77,11 +82,6 @@ public class AjoutManuelCodeBarreActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
         requestQueue.add(stringRequest);
 
-        aliment.setNom_produit(nomProduit);
-        aliment.setId(codebarre);
-        Intent versAjoutAliment = new Intent();
-        versAjoutAliment.setClass(this, AjoutAliment.class);
-        versAjoutAliment.putExtra("aliment",aliment);
-        startActivity(versAjoutAliment);
+
     }
 }
