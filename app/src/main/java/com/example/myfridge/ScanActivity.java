@@ -42,7 +42,7 @@ public class ScanActivity extends AppCompatActivity {
         intentIntegrator.initiateScan();
 
         //Intent deMainActivity = getIntent();
-    /*
+
         //requête internet pour trouver le nom du produit
         String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -51,9 +51,9 @@ public class ScanActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
         requestQueue.add(stringRequest);
 
-    */
+
     }
-    /*
+
     private class urlResponseListener implements Response.Listener<String> {
         @Override
         public void onResponse(String response) {
@@ -72,13 +72,14 @@ public class ScanActivity extends AppCompatActivity {
                 e.printStackTrace();
                 Log.i("test", e.toString());
             }
-            /*
-            Intent VersAjoutAliment = new Intent();
-            VersAjoutAliment.setClass(getBaseContext(), AjoutAlimentCodebarre.class);
-            VersAjoutAliment.putExtra("codebarre",codebarre);
-            VersAjoutAliment.putExtra("nomProduit",nomProduit);
-            startActivity(VersAjoutAliment);
 
+            aliment.setId(codebarre);
+            aliment.setNom_produit(nomProduit);
+
+            Intent versAjoutAlimentActivity = new Intent();
+            versAjoutAlimentActivity.setClass(getBaseContext(), AjoutAliment.class);
+            versAjoutAlimentActivity.putExtra("aliment",aliment);
+            startActivity(versAjoutAlimentActivity);
 
         }
     }
@@ -88,7 +89,6 @@ public class ScanActivity extends AppCompatActivity {
 
         }
     }
-    */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -102,14 +102,6 @@ public class ScanActivity extends AppCompatActivity {
                 //récupération code barre et appel de l'activité d'affichage du nom du produit
                 codebarre = Result.getContents();
                 Toast.makeText(this, codebarre, Toast.LENGTH_SHORT).show();
-
-                aliment.setId(codebarre);
-                aliment.setNom_produit(nomProduit);
-
-                Intent versAjoutAlimentActivity = new Intent();
-                versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
-                versAjoutAlimentActivity.putExtra("aliment",aliment);
-                startActivity(versAjoutAlimentActivity);
 
             }
         } else {
