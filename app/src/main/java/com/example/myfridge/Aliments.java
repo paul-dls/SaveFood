@@ -22,7 +22,7 @@ public class Aliments implements Serializable {
         this.nom_produit = "non communique";
         this.date_ajout = "non communique";
         this.id="non communique";
-        this.date_peremption=null;
+        this.date_peremption="non communique";
         this.quantite=0;
 
     }

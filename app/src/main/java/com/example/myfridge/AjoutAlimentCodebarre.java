@@ -93,13 +93,13 @@ public class AjoutAlimentCodebarre extends AppCompatActivity {
 
     public void EntreeCodeManuel(View view) {
         Intent versAjoutManuel = new Intent();
-        versAjoutManuel.setClass(this, AjoutManuelActivity.class);
+        versAjoutManuel.setClass(this, AjoutManuelCodeBarreActivity.class);
         startActivity(versAjoutManuel);
     }
 
     public void ScanCodebarre(View view) {
         Intent versScanActvity = new Intent();
-        versScanActvity.setClass(this, ScanActivity.class);
+        versScanActvity.setClass(this, ScannerCodeBarreActivity.class);
         startActivity(versScanActvity);
 
     }

@@ -1,8 +1,6 @@
 package com.example.myfridge.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.myfridge.Aliments;
 import com.example.myfridge.AlimentsOperations;
 import com.example.myfridge.R;
-import com.example.myfridge.ScanActivity;
 import com.example.myfridge.databinding.FragmentHomeBinding;
 
 import java.util.Vector;

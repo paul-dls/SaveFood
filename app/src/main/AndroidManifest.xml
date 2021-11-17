@@ -29,7 +29,7 @@
             android:name=".Page_de_garde_Activity"
             android:exported="false" />
         <activity
-            android:name=".AjoutManuelActivity"
+            android:name=".AjoutManuelCodeBarreActivity"
             android:exported="false" />
         <activity
             android:name=".NavigationDrawerActivity"
@@ -37,10 +37,10 @@
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/Theme.MyFridge.NoActionBar" />
         <activity
-            android:name=".getInfoActivity"
+            android:name=".AjoutManuelDateActivity"
             android:exported="false" />
         <activity
-            android:name=".ScanActivity"
+            android:name=".ScannerCodeBarreActivity"
             android:exported="false" />
         <activity
             android:name=".ScannerDateActivity"

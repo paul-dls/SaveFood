@@ -20,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AjoutManuelActivity extends AppCompatActivity {
+public class AjoutManuelCodeBarreActivity extends AppCompatActivity {/*
     String codebarre;
     String nomProduit;
     private Aliments aliment;
@@ -72,7 +72,7 @@ public class AjoutManuelActivity extends AppCompatActivity {
         //requête internet pour trouver le nom du produit
         String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Response.Listener<String> responseListener = new AjoutManuelActivity.urlResponseListener();
+        Response.Listener<String> responseListener = new AjoutManuelCActivity.urlResponseListener();
         Response.ErrorListener responseErrorListener = new AjoutManuelActivity.urlResponseErrorListener();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
         requestQueue.add(stringRequest);
@@ -83,5 +83,5 @@ public class AjoutManuelActivity extends AppCompatActivity {
         versAjoutAliment.setClass(this, AjoutAliment.class);
         versAjoutAliment.putExtra("aliment",aliment);
         startActivity(versAjoutAliment);
-    }
+    }*/
 }

@@ -34,14 +34,15 @@ public class AjoutAliment extends AppCompatActivity {
     public void ScanCodebarre(View view) {
 
         Intent versScanActvity = new Intent();
-        versScanActvity.setClass(this, ScanActivity.class);
+        versScanActvity.setClass(this, ScannerCodeBarreActivity.class);
         versScanActvity.putExtra("aliment", (Serializable) aliment);
         startActivity(versScanActvity);
+        Log.i("erreur intent paul","lancement scan code barre");
     }
 
     public void EntreeCodeManuel(View view) {
         Intent versAjoutManuel = new Intent();
-        versAjoutManuel.setClass(this, AjoutManuelActivity.class);
+        versAjoutManuel.setClass(this, AjoutManuelCodeBarreActivity.class);
         versAjoutManuel.putExtra("aliment", (Serializable) aliment);
         startActivity(versAjoutManuel);
     }
@@ -74,7 +75,7 @@ public class AjoutAliment extends AppCompatActivity {
 
     public void EntreeManuelleDate(View view) {
         Intent versgetInfo = new Intent();
-        versgetInfo.setClass(this, getInfoActivity.class);
+        versgetInfo.setClass(this, AjoutManuelDateActivity.class);
         versgetInfo.putExtra("aliment", (Serializable) aliment);
         startActivity(versgetInfo);
     }

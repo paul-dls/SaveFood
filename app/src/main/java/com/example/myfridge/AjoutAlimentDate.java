@@ -78,6 +78,7 @@ public class AjoutAlimentDate extends AppCompatActivity {
         Intent versAjoutAlimentActivity = new Intent();
         versAjoutAlimentActivity.setClass(this, AjoutAliment.class);
         versAjoutAlimentActivity.putExtra("aliment",aliment);
-        startActivity(versAjoutAlimentActivity);*/
+        startActivity(versAjoutAlimentActivity);
 
-    }
+    }*/
+}

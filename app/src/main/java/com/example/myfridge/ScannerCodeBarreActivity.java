@@ -20,20 +20,22 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ScanActivity extends AppCompatActivity {
+public class ScannerCodeBarreActivity extends AppCompatActivity {
     String codebarre;
     String nomProduit;
     Aliments aliment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("erreur intent paul","oncreate du scan appelé");
         Intent deScanActivity = getIntent();
         aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
+        Log.i("erreur intent paul","aliment.getId()");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
         //Initiation du Scanner
-        IntentIntegrator intentIntegrator = new IntentIntegrator(ScanActivity.this);
+        IntentIntegrator intentIntegrator = new IntentIntegrator(ScannerCodeBarreActivity.this);
         intentIntegrator.setDesiredBarcodeFormats(intentIntegrator.ALL_CODE_TYPES);
         intentIntegrator.setBeepEnabled(false);
         intentIntegrator.setCameraId(0);
@@ -42,15 +44,6 @@ public class ScanActivity extends AppCompatActivity {
         intentIntegrator.initiateScan();
 
         //Intent deMainActivity = getIntent();
-
-        //requête internet pour trouver le nom du produit
-        String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Response.Listener<String> responseListener = new ScanActivity.urlResponseListener();
-        Response.ErrorListener responseErrorListener = new ScanActivity.urlResponseErrorListener();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
-        requestQueue.add(stringRequest);
-
 
     }
 
@@ -72,14 +65,6 @@ public class ScanActivity extends AppCompatActivity {
                 e.printStackTrace();
                 Log.i("test", e.toString());
             }
-
-            aliment.setId(codebarre);
-            aliment.setNom_produit(nomProduit);
-
-            Intent versAjoutAlimentActivity = new Intent();
-            versAjoutAlimentActivity.setClass(getBaseContext(), AjoutAliment.class);
-            versAjoutAlimentActivity.putExtra("aliment",aliment);
-            startActivity(versAjoutAlimentActivity);
 
         }
     }
@@ -103,6 +88,21 @@ public class ScanActivity extends AppCompatActivity {
                 codebarre = Result.getContents();
                 Toast.makeText(this, codebarre, Toast.LENGTH_SHORT).show();
 
+                //requête internet pour trouver le nom du produit
+                String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
+                RequestQueue requestQueue = Volley.newRequestQueue(this);
+                Response.Listener<String> responseListener = new ScannerCodeBarreActivity.urlResponseListener();
+                Response.ErrorListener responseErrorListener = new ScannerCodeBarreActivity.urlResponseErrorListener();
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
+                requestQueue.add(stringRequest);
+
+                aliment.setId(codebarre);
+                aliment.setNom_produit(nomProduit);
+
+                Intent versAjoutAlimentActivity = new Intent();
+                versAjoutAlimentActivity.setClass(getBaseContext(), AjoutAliment.class);
+                versAjoutAlimentActivity.putExtra("aliment",aliment);
+                startActivity(versAjoutAlimentActivity);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);

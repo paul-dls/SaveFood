@@ -61,6 +61,8 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
         Intent deScanActivity = getIntent();
         aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
 
+        Log.i("erreur intent paul",aliment.getId());
+
         setContentView(R.layout.activity_scanner_date);
         cameraView = findViewById(R.id.surface_view);
         txtView = findViewById(R.id.txtview);

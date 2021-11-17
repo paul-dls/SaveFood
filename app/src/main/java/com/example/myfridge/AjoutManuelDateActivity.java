@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class getInfoActivity extends AppCompatActivity {
+public class AjoutManuelDateActivity extends AppCompatActivity {
     //String codebarre;
     //String nomProduit;
     //String dateAjout;
