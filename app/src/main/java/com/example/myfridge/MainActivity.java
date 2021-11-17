@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.myfridge.ui.home.AjoutAlimentCodebarre;
-
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {

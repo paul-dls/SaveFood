@@ -2,11 +2,9 @@ package com.example.myfridge;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -16,7 +14,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import com.example.myfridge.ui.home.AjoutAlimentCodebarre;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -41,7 +38,7 @@ public class ScanActivity extends AppCompatActivity {
         intentIntegrator.initiateScan();
 
         //Intent deMainActivity = getIntent();
-
+    /*
         //requête internet pour trouver le nom du produit
         String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -49,8 +46,10 @@ public class ScanActivity extends AppCompatActivity {
         Response.ErrorListener responseErrorListener = new ScanActivity.urlResponseErrorListener();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
         requestQueue.add(stringRequest);
-    }
 
+    */
+    }
+    /*
     private class urlResponseListener implements Response.Listener<String> {
         @Override
         public void onResponse(String response) {
@@ -69,12 +68,14 @@ public class ScanActivity extends AppCompatActivity {
                 e.printStackTrace();
                 Log.i("test", e.toString());
             }
-
+            /*
             Intent VersAjoutAliment = new Intent();
             VersAjoutAliment.setClass(getBaseContext(), AjoutAlimentCodebarre.class);
             VersAjoutAliment.putExtra("codebarre",codebarre);
             VersAjoutAliment.putExtra("nomProduit",nomProduit);
             startActivity(VersAjoutAliment);
+
+
         }
     }
     private class urlResponseErrorListener implements Response.ErrorListener {
@@ -83,6 +84,7 @@ public class ScanActivity extends AppCompatActivity {
 
         }
     }
+    */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -96,6 +98,12 @@ public class ScanActivity extends AppCompatActivity {
                 //récupération code barre et appel de l'activité d'affichage du nom du produit
                 codebarre = Result.getContents();
                 Toast.makeText(this, codebarre, Toast.LENGTH_SHORT).show();
+
+                Intent VersAjoutAliment = new Intent();
+                VersAjoutAliment.setClass(getBaseContext(), AjoutAlimentCodebarre.class);
+                VersAjoutAliment.putExtra("codebarre",codebarre);
+                //VersAjoutAliment.putExtra("nomProduit",nomProduit);
+                startActivity(VersAjoutAliment);
 
             }
         } else {

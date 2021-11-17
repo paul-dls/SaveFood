@@ -20,7 +20,7 @@
             android:name=".AjoutAlimentDate"
             android:exported="false" />
         <activity
-            android:name=".ui.home.AjoutAlimentCodebarre"
+            android:name=".AjoutAlimentCodebarre"
             android:exported="false" />
         <activity
             android:name=".Page_de_garde_Activity"
