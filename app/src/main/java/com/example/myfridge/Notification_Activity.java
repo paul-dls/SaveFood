@@ -12,12 +12,27 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Notification_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+
+        int duree;
+
+        //ajouter date d'expiration
+        String date_expi;
+        date_expi="19-11-2021";
+        SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String date_now = sdf(new Date());
+
+        duree.printDifference(date_now,date_expi);
+        notif (duree);
     }
 
 
