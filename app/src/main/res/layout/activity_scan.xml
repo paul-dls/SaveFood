@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:backgroundTint="#1F39C8"
         android:onClick="onClickScanner"
         android:text="go Scan" />
 
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="50dp"
+        android:backgroundTint="#59A3DD"
         android:onClick="ajoutManuel"
         android:text="ajout manuel"
         android:translationX="125dp"
