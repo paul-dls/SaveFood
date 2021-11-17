@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -33,6 +34,7 @@ public class AjoutAlimentDate extends AppCompatActivity {
         Intent deAjoutAlimentCodebarre = getIntent();
         codebarre = deAjoutAlimentCodebarre.getStringExtra("codebarre");
         nomProduit=deAjoutAlimentCodebarre.getStringExtra("NomProduit");
+        Toast.makeText(this, nomProduit + "\n"+ codebarre, Toast.LENGTH_SHORT).show();
 
         //récupération date de péremption manuelle
         Intent degetInfo= getIntent();
@@ -66,6 +68,7 @@ public class AjoutAlimentDate extends AppCompatActivity {
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
         alimentsOperations.open();
         Log.i("getInfo","ouverture BDD");
+
 
         alimentsOperations.addAliments(new Aliments(codebarre,nomProduit,dateAjout,datePeremption,quantite));
         Log.i("getInfo","ajout Aliment");
