@@ -76,7 +76,7 @@ public class AjoutAlimentDate extends AppCompatActivity {
         Log.i("getInfo","fermeture BDD");
 
         Intent versAjoutAlimentActivity = new Intent();
-        versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+        versAjoutAlimentActivity.setClass(this, AjoutAliment.class);
         versAjoutAlimentActivity.putExtra("aliment",aliment);
         startActivity(versAjoutAlimentActivity);
 

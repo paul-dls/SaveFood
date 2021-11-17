@@ -86,7 +86,7 @@ public class AjoutAlimentCodebarre extends AppCompatActivity {
 
 
         Intent versAjoutAlimentActivity = new Intent();
-        versAjoutAlimentActivity.setClass(this, AjoutAlimentActivity.class);
+        versAjoutAlimentActivity.setClass(this, AjoutAliment.class);
         versAjoutAlimentActivity.putExtra("aliment",aliment);
         startActivity(versAjoutAlimentActivity);
     }
