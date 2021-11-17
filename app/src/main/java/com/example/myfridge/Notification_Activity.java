@@ -31,5 +31,6 @@ public class Notification_Activity extends AppCompatActivity {
         // or other notification behaviors after this
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
+
     }
 }
