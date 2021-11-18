@@ -40,7 +40,7 @@ public class AffichageUnAliment extends AppCompatActivity {
         textquantite.setText( "quantité: "+ "\n" + String.valueOf(quantite));
 
     }
-
+    //augmenter la quantité d'aliments déjà dans le frigo
     public void PlusQuantite(View view) {
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
         alimentsOperations.open();
@@ -49,7 +49,7 @@ public class AffichageUnAliment extends AppCompatActivity {
         textquantite.setText( "quantité: "+ "\n" + String.valueOf(quantite));
         alimentsOperations.close();
     }
-
+    //retirer des aliments
     public void MoinsQuantite(View view) {
         if(quantite>1) {
             AlimentsOperations alimentsOperations = new AlimentsOperations(this);
@@ -59,7 +59,13 @@ public class AffichageUnAliment extends AppCompatActivity {
             textquantite.setText( "quantité: "+ "\n" + String.valueOf(quantite));
             alimentsOperations.close();
         }else{
+            AlimentsOperations alimentsOperations = new AlimentsOperations(this);
+            alimentsOperations.open();
             alimentsOperations.EffacerAliment(codebarre);
+            alimentsOperations.close();
+            Intent versMainActivity = new Intent();
+            versMainActivity.setClass(this,MainActivity.class);
+            startActivity(versMainActivity);
         }
     }
 }
