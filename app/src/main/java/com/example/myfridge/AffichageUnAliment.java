@@ -68,4 +68,14 @@ public class AffichageUnAliment extends AppCompatActivity {
             startActivity(versMainActivity);
         }
     }
+
+    public void effacerAliment(View view) {
+        AlimentsOperations alimentsOperations = new AlimentsOperations(this);
+        alimentsOperations.open();
+        alimentsOperations.EffacerAliment(codebarre);
+        alimentsOperations.close();
+        Intent versMainActivity = new Intent();
+        versMainActivity.setClass(this,MainActivity.class);
+        startActivity(versMainActivity);
+    }
 }
