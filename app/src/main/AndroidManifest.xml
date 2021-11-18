@@ -20,12 +20,6 @@
             android:name=".AjoutAliment"
             android:exported="false" />
         <activity
-            android:name=".AjoutAlimentDate"
-            android:exported="false" />
-        <activity
-            android:name=".AjoutAlimentCodebarre"
-            android:exported="false" />
-        <activity
             android:name=".Page_de_garde_Activity"
             android:exported="false" />
         <activity
@@ -45,9 +39,6 @@
         <activity
             android:name=".ScannerDateActivity"
             android:exported="false" />
-        <activity
-            android:name=".Notification"
-            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
