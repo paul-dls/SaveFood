@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.myfridge.ui.home.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -54,11 +55,11 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM -yyyy");
         String dateAjout= df.format(calendrier.getTime());
         Log.i("fonctionnement normal", "date d'ajout récupérée");
-        Log.i("scan", "rentre dans le onClick");
+
         Intent VersAjoutAliment= new Intent();
         VersAjoutAliment.setClass(this, AjoutAliment.class);
         VersAjoutAliment.putExtra("aliment", new Aliments("1","non communiqué",dateAjout,"non communiqué",1));
-
+        //getFragmentManager().findFragmentById(R.id.).refresh();
 
         startActivity(VersAjoutAliment);
         Log.i("scan", "intent vers AjoutAliment");
