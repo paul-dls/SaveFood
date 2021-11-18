@@ -19,6 +19,7 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#239ED6"
             android:onClick="AfficherContenuFrigo"
             android:text="Voir le contenu mon frigo" />
 
@@ -26,18 +27,21 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
             android:text="Voir les produits bientôt périmés" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Voir ma liste de course" />
+            android:backgroundTint="#239ED6"
+            android:text="Voir ma liste de courses" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#239ED6"
             android:text="Mettre à jour les produits" />
 
         <ListView
