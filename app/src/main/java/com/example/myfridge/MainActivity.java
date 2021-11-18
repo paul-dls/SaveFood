@@ -84,4 +84,10 @@ public class MainActivity extends AppCompatActivity {
         versAffichageFrigo.setClass(this,AffichageFrigoActivity.class);
         startActivity(versAffichageFrigo);
     }
+
+    public void ListeCourse(View view) {
+        Intent versListeCourse = new Intent();
+        versListeCourse.setClass(this,ListeCourseActivity.class);
+        startActivity(versListeCourse);
+    }
 }
