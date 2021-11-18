@@ -29,10 +29,11 @@
         android:id="@+id/TextDatePeremption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="date de péremption"
         android:inputType="textPersonName"
-        android:hint="date de péremption" />
+        android:minHeight="48dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10" />
+            android:ems="10"
+            android:minHeight="48dp" />
     </LinearLayout>
 
     <Button
