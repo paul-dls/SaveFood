@@ -17,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfridge.databinding.ActivityNavigationDrawerBinding;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class NavigationDrawerActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -30,21 +33,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarNavigationDrawer.toolbar);
-        binding.appBarNavigationDrawer.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //methode Onclick pour ajouter un produit dans le frigo à partir de Home
-            public void onClick(View view) {
-                Log.i("fonctionnement normal", "appel ajout de produit");
-                Intent VersAjoutAliment= new Intent();
-                VersAjoutAliment.setClass(getLayoutInflater().getContext(), AjoutAlimentCodebarre.class);
-                VersAjoutAliment.putExtra("message", "ok");
-                startActivity(VersAjoutAliment);
-                Log.i("fonctionnement normal", "intent vers Scan actvity dans l'ajout de produit");
 
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //.setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -57,6 +46,24 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
+    public void ajouter(View view) {
+        // récupération date d'ajout
+        //Log.i("erreur paul drawer","lacement de la fonction ajouter");
+        Calendar calendrier=Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM -yyyy");
+        String dateAjout= df.format(calendrier.getTime());
+        Log.i("fonctionnement normal", "date d'ajout récupérée");
+        Log.i("scan", "rentre dans le onClick");
+        Intent VersAjoutAliment= new Intent();
+        VersAjoutAliment.setClass(this, AjoutAliment.class);
+        VersAjoutAliment.putExtra("aliment", new Aliments("1","non communiqué",dateAjout,"non communiqué",1));
+
+        startActivity(VersAjoutAliment);
+        Log.i("scan", "intent vers AjoutAliment");
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,5 +78,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 
 }
