@@ -4,11 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Vector;
 
@@ -20,6 +32,8 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
     String[] DateAjoutAliments;
     String[] DatePeremptionAliments;
     Vector<Aliments> lAliments;
+    String[] urlImageAliments;
+    int j=0;
     int k =0;
 
 
@@ -67,6 +81,7 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
             CodebarreAliments =new String[lAliments.size()];
             DateAjoutAliments =new String[lAliments.size()];
             DatePeremptionAliments =new String[lAliments.size()];
+            urlImageAliments = new String[lAliments.size()];
             for (int i = 0; i < lAliments.size(); i++) {
                 String nom = lAliments.get(i).getNom_produit();
                 int quantite = lAliments.get(i).getQuantite();
@@ -79,6 +94,12 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
                 DateAjoutAliments[i] = dateAjout;
                 DatePeremptionAliments[i] = datePeremption;
 
+                String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
+                RequestQueue requestQueue = Volley.newRequestQueue(this);
+                Response.Listener<String> responseListener = new AffichageFrigoActivity.urlResponseListener();
+                Response.ErrorListener responseErrorListener = new AffichageFrigoActivity.urlResponseErrorListener();
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
+                requestQueue.add(stringRequest);
             }
         }
 
@@ -87,11 +108,39 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
         spin.setOnItemSelectedListener(this);
 
 //Creating the ArrayAdapter instance having the bank name list
-        //CustomAdapter customAdapter = new CustomAdapter(this,NomsAliments,QuantiteAliments);
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,NomsAliments);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        CustomAdapter customAdapter = new CustomAdapter(this,NomsAliments,urlImageAliments);
+        //ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,NomsAliments);
+        //aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //Setting the ArrayAdapter data on the Spinner
-        spin.setAdapter(aa);
+        spin.setAdapter(customAdapter);
+    }
+
+    private class urlResponseListener implements Response.Listener<String> {
+        @Override
+        public void onResponse(String response) {
+            try {
+                //récupération url image du produit à partir du résultat de la requête internet
+                JSONObject obj = new JSONObject(response);
+                Log.i("test", "recupère JSON");
+                JSONObject product = obj.getJSONObject("product");
+                Log.i("test", "recupère JSON product");
+                String urlImage = product.getString("image_front_small_url");
+                Log.i("test", "url récupéré");
+                urlImageAliments[j]=urlImage;
+                j++;
+                Toast.makeText(getBaseContext(),urlImage, Toast.LENGTH_SHORT).show();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.i("test", e.toString());
+            }
+        }
+    }
+    private class urlResponseErrorListener implements Response.ErrorListener {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+
+        }
     }
 
     //Performing action onItemSelected and onNothing selected
@@ -112,4 +161,5 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
         // TOD Auto-generated method stub
 
     }
+
 }
