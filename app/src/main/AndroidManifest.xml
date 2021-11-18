@@ -32,10 +32,9 @@
             android:name=".AjoutManuelCodeBarreActivity"
             android:exported="false" />
         <activity
-            android:name=".NavigationDrawerActivity"
-            android:exported="false"
-            android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/Theme.MyFridge.NoActionBar" />
+            android:name=".MainActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".AjoutManuelDateActivity"
             android:exported="false" />
@@ -46,11 +45,10 @@
             android:name=".ScannerDateActivity"
             android:exported="false" />
         <activity
-            android:name=".Notification"
-            android:exported="false"/>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".NavigationDrawerActivity"
+            android:exported="true"
+            android:label="@string/title_activity_navigation_drawer"
+            android:theme="@style/Theme.MyFridge.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
