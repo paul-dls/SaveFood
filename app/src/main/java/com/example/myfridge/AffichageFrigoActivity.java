@@ -128,7 +128,7 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
                 Log.i("test", "url récupéré");
                 urlImageAliments[j]=urlImage;
                 j++;
-                Toast.makeText(getBaseContext(),urlImage, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),urlImage, Toast.LENGTH_SHORT).show();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -150,6 +150,7 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
         Intent versAffichageUnAliment = new Intent();
         versAffichageUnAliment.setClass(this, AffichageUnAliment.class);
         versAffichageUnAliment.putExtra("alimentSelectionne", lAliments.get(position));
+        versAffichageUnAliment.putExtra("urlImage", urlImageAliments[position]);
         startActivity(versAffichageUnAliment);}
         k++;
         Toast.makeText(getApplicationContext(), NomsAliments[position], Toast.LENGTH_LONG).show();

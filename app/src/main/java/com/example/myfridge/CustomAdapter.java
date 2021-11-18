@@ -63,7 +63,7 @@ public class CustomAdapter extends BaseAdapter {
         ImageView imageView;
         public DownloadImageFromInternet(ImageView icon) {
             this.imageView=icon;
-            Toast.makeText(context.getApplicationContext(), "Please wait, it may take a few minutes to load ...", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context.getApplicationContext(), "Please wait, it may take a few minutes to load ...", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -85,4 +85,5 @@ public class CustomAdapter extends BaseAdapter {
             imageView.setImageBitmap(bitmap);
         }
     }
+
 }

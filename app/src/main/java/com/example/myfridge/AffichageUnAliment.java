@@ -3,14 +3,24 @@ package com.example.myfridge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class AffichageUnAliment extends AppCompatActivity {
     String codebarre;
     String dateAjout;
     String datePeremption;
+    String urlImage;
     int quantite;
     String nomProduit;
     private AlimentsOperations alimentsOperations;
@@ -23,6 +33,7 @@ public class AffichageUnAliment extends AppCompatActivity {
 
         Intent deAffichageFrigo = getIntent();
         Aliments aliments = (Aliments) deAffichageFrigo.getSerializableExtra("alimentSelectionne");
+        urlImage= deAffichageFrigo.getStringExtra("urlImage");
         codebarre=aliments.getId();
         datePeremption= aliments.getDate_peremption();
         dateAjout= aliments.getDate_ajout();
@@ -39,7 +50,10 @@ public class AffichageUnAliment extends AppCompatActivity {
         textquantite = findViewById(R.id.textQuantite);
         textquantite.setText( "quantité: "+ "\n" + String.valueOf(quantite));
 
+        ImageView icon = findViewById(R.id.image_view);
+        
     }
+
     //augmenter la quantité d'aliments déjà dans le frigo
     public void PlusQuantite(View view) {
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
