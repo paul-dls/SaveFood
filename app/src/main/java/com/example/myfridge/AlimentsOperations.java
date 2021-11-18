@@ -109,8 +109,9 @@ public class AlimentsOperations {
         int numeroColonneQuantite = cursor.getColumnIndexOrThrow(dbHelper.getQuantite());
         if (cursor.moveToFirst() == true) {
             do {
-                NomQuantite[0] = cursor.getString(numeroColonneNom_Produit);
-                NomQuantite[1] = String.valueOf(cursor.getInt(numeroColonneQuantite));
+                String nomProduit =  cursor.getString(numeroColonneNom_Produit);
+                String quantite =  String.valueOf(cursor.getInt(numeroColonneQuantite));
+                NomQuantite = new String[]{nomProduit,quantite};
                 listeNomAliment.add(NomQuantite);
             } while (cursor.moveToNext());
         }
