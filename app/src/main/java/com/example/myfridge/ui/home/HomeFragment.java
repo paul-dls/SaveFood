@@ -101,20 +101,4 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-
-    public void ajouter(View view) {
-        // récupération date d'ajout
-        Calendar calendrier=Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM -yyyy");
-        String dateAjout= df.format(calendrier.getTime());
-        Log.i("fonctionnement normal", "date d'ajout récupérée");
-        Log.i("scan", "rentre dans le onClick");
-        Intent VersAjoutAliment= new Intent();
-        VersAjoutAliment.setClass(context, AjoutAliment.class);
-        VersAjoutAliment.putExtra("aliment", new Aliments("1","non communiqué",dateAjout,"non communiqué",1));
-
-        startActivity(VersAjoutAliment);
-        Log.i("scan", "intent vers AjoutAliment");
-    }
-
 }
