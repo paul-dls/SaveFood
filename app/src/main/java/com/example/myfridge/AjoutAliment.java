@@ -77,7 +77,7 @@ public class AjoutAliment extends AppCompatActivity {
         Intent versMainActvity = new Intent();
         versMainActvity.setClass(this, MainActivity.class);
         startActivity(versMainActvity);
-        finish();
+
     }
 
     public void ScanDate(View view) {

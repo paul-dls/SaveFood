@@ -19,6 +19,7 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
     String[] CodebarreAliments;
     String[] DateAjoutAliments;
     String[] DatePeremptionAliments;
+    String[] AdresseImageAlimenst;
     Vector<Aliments> lAliments;
     int k =0;
 
@@ -81,6 +82,7 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
 
             }
         }
+
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
