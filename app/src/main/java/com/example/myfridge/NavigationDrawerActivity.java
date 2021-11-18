@@ -59,6 +59,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         VersAjoutAliment.setClass(this, AjoutAliment.class);
         VersAjoutAliment.putExtra("aliment", new Aliments("1","non communiqué",dateAjout,"non communiqué",1));
 
+
         startActivity(VersAjoutAliment);
         Log.i("scan", "intent vers AjoutAliment");
     }
