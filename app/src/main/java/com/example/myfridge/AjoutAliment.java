@@ -48,7 +48,7 @@ public class AjoutAliment extends AppCompatActivity {
         versScanActvity.putExtra("aliment", (Serializable) aliment);
         startActivity(versScanActvity);
         Log.i("erreur intent paul","lancement scan code barre");
-        finish();
+        //finish();
     }
 
     public void EntreeCodeManuel(View view) {
@@ -56,7 +56,7 @@ public class AjoutAliment extends AppCompatActivity {
         versAjoutManuel.setClass(this, AjoutManuelCodeBarreActivity.class);
         versAjoutManuel.putExtra("aliment", (Serializable) aliment);
         startActivity(versAjoutManuel);
-        finish();
+        //finish();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -85,7 +85,7 @@ public class AjoutAliment extends AppCompatActivity {
         versScannerDateActivity.setClass(this, ScannerDateActivity.class);
         versScannerDateActivity.putExtra("aliment", (Serializable) aliment);
         startActivity(versScannerDateActivity);
-        finish();
+        //finish();
     }
 
     public void EntreeManuelleDate(View view) {
@@ -93,6 +93,6 @@ public class AjoutAliment extends AppCompatActivity {
         versgetInfo.setClass(this, AjoutManuelDateActivity.class);
         versgetInfo.putExtra("aliment", (Serializable) aliment);
         startActivity(versgetInfo);
-        finish();
+        //finish();
     }
 }
