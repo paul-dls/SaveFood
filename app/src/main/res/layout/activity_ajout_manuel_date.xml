@@ -29,9 +29,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Entrez date"
+        android:backgroundTint="#65C335"
         android:onClick="ajouterDatePeremption"
-        app:layout_constraintTop_toBottomOf="@id/datePicker1"/>
+        android:text="Entrez la date"
+        app:layout_constraintTop_toBottomOf="@id/datePicker1" />
 
 
 </LinearLayout>

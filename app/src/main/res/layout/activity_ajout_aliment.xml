@@ -11,6 +11,7 @@
         android:id="@+id/boutonScanCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#102FDF"
         android:onClick="ScanCodebarre"
         android:text="scan du code barre" />
 
@@ -18,6 +19,7 @@
         android:id="@+id/boutonCodeManuel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#4BBDF1"
         android:onClick="EntreeCodeManuel"
         android:text="ajout manuel du codebarre" />
 
@@ -26,15 +28,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Nom du produit"
         android:inputType="textPersonName"
-        android:hint="Nom du produit" />
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/boutonScanDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="ScanDate"
         android:layout_marginBottom="10dp"
+        android:backgroundTint="#102FDF"
+        android:onClick="ScanDate"
         android:text="Scanner la date de péremption" />
 
     <Button
@@ -42,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:backgroundTint="#4BBDF1"
         android:onClick="EntreeManuelleDate"
         android:text="Entrée manuelle de la date de péremption" />
 
@@ -49,10 +54,11 @@
         android:id="@+id/TextDatePeremption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="date de péremption"
         android:inputType="textPersonName"
-        android:hint="date de péremption" />
+        android:minHeight="48dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,14 +78,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:text="1"/>
+            android:minHeight="48dp"
+            android:text="1" />
     </LinearLayout>
 
     <Button
-    android:id="@+id/boutonEntree"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:onClick="AjouterAlimentBDD"
-    android:text="Entree la date de péremption" />
+        android:id="@+id/boutonEntree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#65C335"
+        android:onClick="AjouterAlimentBDD"
+        android:text="Valider" />
 
 </LinearLayout>
