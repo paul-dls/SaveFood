@@ -73,9 +73,8 @@ public class MainActivity extends AppCompatActivity {
         Intent VersAjoutAliment= new Intent();
         VersAjoutAliment.setClass(this, AjoutAliment.class);
         VersAjoutAliment.putExtra("aliment", new Aliments("1","non communiqué",dateAjout,"non communiqué",1));
-        finish();
-
         startActivity(VersAjoutAliment);
         Log.i("scan", "intent vers AjoutAliment");
+        finish();
     }
 }
