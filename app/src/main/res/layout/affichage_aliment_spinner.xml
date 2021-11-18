@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:layout_height="wrap_content">
 
-
-    <Button
-        android:id="@+id/buttonRetrait"
-        android:layout_width="3dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="-" />
-
-    <TextView
-        android:id="@+id/textViewNombre"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="TextView" />
-
-    <Button
-        android:id="@+id/buttonAjout"
-        android:layout_width="3dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="+" />
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+         />
 
     <TextView
         android:id="@+id/textViewNomProduit"
@@ -34,4 +19,5 @@
         android:layout_marginLeft="3dp"
         android:layout_weight="1"
         android:text="TextView" />
+
 </LinearLayout>

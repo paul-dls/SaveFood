@@ -31,13 +31,6 @@
             android:text="Voir ma liste de courses" />
 
         <Button
-            android:id="@+id/boutonMiseAJourFrigo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#239ED6"
-            android:text="Mettre à jour les produits" />
-
-        <Button
             android:id="@+id/buttonFrigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
