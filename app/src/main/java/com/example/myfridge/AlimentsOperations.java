@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Vector;
 
@@ -31,6 +32,58 @@ public class AlimentsOperations {
     public void close() {
         dbHelper.close();
     }
+
+    public void ModifierQuantite(String codebarre, int Nouvellequantite,String dateAjout, String datePeremption, String nomProduit){
+        database.execSQL("DELETE FROM aliments WHERE id= " + codebarre, new String[]{});
+        Aliments a = new Aliments(codebarre,nomProduit,dateAjout,datePeremption,Nouvellequantite);
+        addAliments(a);
+        /*
+        ContentValues valeurs = new ContentValues();
+        // Initialisation de la variable valeurs avec les couples de
+        // valeurs suivants :
+        //    - (NOM, nom)
+        //    - (NUMERO_TELEPHONE, numeroTelephone)
+        valeurs.put(dbHelper.getId(),codebarre);
+        valeurs.put(dbHelper.getNom_Produit(), nomProduit);
+        valeurs.put(dbHelper.getDate_Ajout(), dateAjout);
+        valeurs.put(dbHelper.getDate_Peremption(),datePeremption);
+        valeurs.put(dbHelper.getQuantite(),Nouvellequantite);
+
+        int count = database.update("aliments",valeurs, "quantite= ?", new String[]{String.valueOf(Nouvellequantite)});
+
+        try{
+            Cursor cursor = database.rawQuery("UPDATE aliments SET quantite= "+ String.valueOf(Nouvellequantite)+ " WHERE id = " + codebarre, new String[]{});
+        }catch (Exception e){
+            Log.i("erreur UPDATE",e.toString());
+        }
+
+         */
+    }
+    public void EffacerAliment(String codebarre){
+        database.execSQL("DELETE FROM aliments WHERE id= " + codebarre, new String[]{});
+    }
+
+    public int RetourneQuantite(String codebarre,int AncienneQuantite){
+
+        Cursor cursor = database.rawQuery("SELECT quantite FROM aliments WHERE id= " + codebarre, new String[]{});
+        int quantite = AncienneQuantite;
+        /*
+        if (cursor.moveToFirst()==true ){
+            quantite = cursor.getInt(0);
+        }
+            return quantite; */
+
+        int numeroColonneQuantite = cursor.getColumnIndexOrThrow(dbHelper.getQuantite());
+
+        if (cursor.moveToFirst() == true) {
+            do {
+                quantite = cursor.getInt(numeroColonneQuantite);
+            } while (cursor.moveToNext());
+        }
+        return quantite;
+
+    }
+
     public long addAliments(Aliments a) {
 
         ContentValues valeurs = new ContentValues();
@@ -54,7 +107,7 @@ public class AlimentsOperations {
     }
 
     //Affichage des aliments contenus dans la table "aliments"
-    public Vector<Aliments> listAllAliments() {
+    public Vector<Aliments> listAllAliments(){
 
         String tabColonne[] = new String [5];
         Vector<Aliments> lAliments = new Vector<Aliments>();
@@ -100,5 +153,24 @@ public class AlimentsOperations {
         return lAliments;
     }
 
+    // fonction renvoyant le nom, la quantité et le codebarre des aliments
+    public Vector<String[]> listeNomQuantiteCodebarre() {
+        Vector<String[]> listeNomAliment = new Vector<String[]>();
+        String[] NomQuantite = new String[2];
+        Cursor cursor = database.rawQuery("SELECT nom_produit, quantite, codebarre FROM aliments", new String[]{});
+        int numeroColonneNom_Produit = cursor.getColumnIndexOrThrow(dbHelper.getNom_Produit());
+        int numeroColonneQuantite = cursor.getColumnIndexOrThrow(dbHelper.getQuantite());
+        int numeroColonnecodebarre = cursor.getColumnIndexOrThrow(dbHelper.getId());
+        if (cursor.moveToFirst() == true) {
+            do {
+                String nomProduit =  cursor.getString(numeroColonneNom_Produit);
+                String quantite =  String.valueOf(cursor.getInt(numeroColonneQuantite));
+                String codebarre = cursor.getString(numeroColonnecodebarre);
+                NomQuantite = new String[]{nomProduit,quantite,codebarre};
+                listeNomAliment.add(NomQuantite);
+            } while (cursor.moveToNext());
+        }
+        return listeNomAliment;
+    }
 }
 
