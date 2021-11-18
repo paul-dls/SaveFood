@@ -40,7 +40,7 @@ public class Notification {
 
             duree= Math.abs(date_expi.getTime() - date_actuelle.getTime());
             Log.i("normal paul date", "duree : "+ String.valueOf(duree));
-            notif(duree + 3000,mContext,aliment);
+            notif(duree + 30000,mContext,aliment);
 
         }catch(ParseException e){
             Log.i("erreur paul date",e.toString());

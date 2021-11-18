@@ -68,7 +68,7 @@ public class AjoutManuelDateActivity extends AppCompatActivity {
         //récupération de la date de péremption
         DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.datePicker1); // initiate a date picker
         String day = String.valueOf(simpleDatePicker.getDayOfMonth()); // get the selected day of the month
-        String month =String.valueOf(simpleDatePicker.getMonth()); // get the selected month
+        String month = String.valueOf(1 + Integer.parseInt(String.valueOf(simpleDatePicker.getMonth()))); // get the selected month
         String year = String.valueOf(simpleDatePicker.getYear()); // get the selected year
 
         datePeremption= day + "-" +month + "-"+year;
