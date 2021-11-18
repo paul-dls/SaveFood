@@ -100,14 +100,18 @@ public class AlimentsOperations {
         return lAliments;
     }
 
-    public Vector<String> listeNomAliment() {
-        Vector<String> listeNomAliment = new Vector<String>();
-        Cursor cursor = database.rawQuery("SELECT nom_produit FROM aliments", new String[]{});
+    // fonction renvoyant le nom et la quantité des aliments
+    public Vector<String[]> listeNomAliment() {
+        Vector<String[]> listeNomAliment = new Vector<String[]>();
+        String[] NomQuantite = new String[2];
+        Cursor cursor = database.rawQuery("SELECT nom_produit, quantite FROM aliments", new String[]{});
         int numeroColonneNom_Produit = cursor.getColumnIndexOrThrow(dbHelper.getNom_Produit());
+        int numeroColonneQuantite = cursor.getColumnIndexOrThrow(dbHelper.getQuantite());
         if (cursor.moveToFirst() == true) {
             do {
-                String nom_produit = cursor.getString(numeroColonneNom_Produit);
-                listeNomAliment.add(nom_produit);
+                NomQuantite[0] = cursor.getString(numeroColonneNom_Produit);
+                NomQuantite[1] = String.valueOf(cursor.getInt(numeroColonneQuantite));
+                listeNomAliment.add(NomQuantite);
             } while (cursor.moveToNext());
         }
         return listeNomAliment;

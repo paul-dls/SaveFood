@@ -14,24 +14,27 @@ import java.util.Vector;
 public class AffichageFrigoActivity extends AppCompatActivity implements AdapterView .OnItemSelectedListener{
     private AlimentsOperations alimentsOperations;
     String[] NomsAliments;
+    String[] QuantiteAliments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affichage_frigo);
 
+        // récupération du nom et de la quantite des aliments à afficher dans le spinenr (menu déroulant)
         alimentsOperations = new AlimentsOperations(this);
-        // On stocke dans le vecteur "lAlimentss" la liste des aliments
-        // contenus dans la table "aliments" de la base de données
-        Vector<String> listeNomAliments;
+        Vector<String[]> listeNomQuantite;
         alimentsOperations.open();
-        listeNomAliments = alimentsOperations.listeNomAliment();
+        listeNomQuantite = alimentsOperations.listeNomAliment();
         alimentsOperations.close();
-        if (listeNomAliments != null) {
-            NomsAliments =new  String[listeNomAliments.size()];
-            for (int i = 0; i < listeNomAliments.size(); i++) {
-                String nom = listeNomAliments.get(i);
+        if (listeNomQuantite != null) {
+            NomsAliments =new  String[listeNomQuantite.size()];
+            QuantiteAliments= new String [listeNomQuantite.size()];
+            for (int i = 0; i < listeNomQuantite.size(); i++) {
+                String nom = listeNomQuantite.get(i)[0];
+                String quantite = listeNomQuantite.get(i)[1];
                 NomsAliments[i] = nom;
+                QuantiteAliments[i] = quantite;
             }
         }
 
@@ -40,8 +43,8 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
         spin.setOnItemSelectedListener(this);
 
 //Creating the ArrayAdapter instance having the bank name list
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,NomsAliments);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        CustomAdapter aa = new CustomAdapter(this,NomsAliments,QuantiteAliments);
+        //aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
     }
