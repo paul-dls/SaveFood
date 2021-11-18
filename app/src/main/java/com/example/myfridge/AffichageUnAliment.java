@@ -43,7 +43,7 @@ public class AffichageUnAliment extends AppCompatActivity {
     public void PlusQuantite(View view) {
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
         alimentsOperations.open();
-        alimentsOperations.ModifierQuantite(codebarre,quantite+1);
+        alimentsOperations.ModifierQuantite(codebarre,quantite+1,  dateAjout, datePeremption, nomProduit);
         quantite=alimentsOperations.RetourneQuantite(codebarre,quantite);
         alimentsOperations.close();
     }
@@ -52,7 +52,7 @@ public class AffichageUnAliment extends AppCompatActivity {
         if(quantite>1) {
             AlimentsOperations alimentsOperations = new AlimentsOperations(this);
             alimentsOperations.open();
-            alimentsOperations.ModifierQuantite(codebarre, quantite - 1);
+            alimentsOperations.ModifierQuantite(codebarre, quantite - 1,  dateAjout, datePeremption, nomProduit);
             quantite = alimentsOperations.RetourneQuantite(codebarre, quantite);
             alimentsOperations.close();
         }
