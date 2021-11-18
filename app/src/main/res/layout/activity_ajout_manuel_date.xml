@@ -11,27 +11,32 @@
         android:id="@+id/nomProduit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginTop="10dp"
+        android:text="Veuillez entrer la date"
         tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="162dp"
-        android:layout_marginTop="10dp" />
+        tools:layout_editor_absoluteY="162dp" />
 
     <DatePicker
         android:id="@+id/datePicker1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:datePickerMode="spinner"
-        app:layout_constraintTop_toBottomOf="@id/nomProduit">
-    </DatePicker>
+        android:headerBackground="#65C335"
+        app:layout_constraintTop_toBottomOf="@id/nomProduit"></DatePicker>
 
     <Button
         android:id="@+id/submit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Entrez date"
+        android:backgroundTint="#65C335"
         android:onClick="ajouterDatePeremption"
-        app:layout_constraintTop_toBottomOf="@id/datePicker1"/>
+        android:text="Valider" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/horloge" />
 
 
 </LinearLayout>
