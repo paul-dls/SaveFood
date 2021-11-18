@@ -28,8 +28,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Nom du produit"
         android:inputType="textPersonName"
-        android:hint="Nom du produit" />
+        android:minHeight="48dp" />
 
 
     <Button
