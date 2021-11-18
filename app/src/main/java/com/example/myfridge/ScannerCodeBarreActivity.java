@@ -32,7 +32,7 @@ public class ScannerCodeBarreActivity extends AppCompatActivity {
         Log.i("erreur intent paul","aliment.getId()");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan);
+        setContentView(R.layout.activity_scanner_code_barre);
 
         //Initiation du Scanner
         IntentIntegrator intentIntegrator = new IntentIntegrator(ScannerCodeBarreActivity.this);
