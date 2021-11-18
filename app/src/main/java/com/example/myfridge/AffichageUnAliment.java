@@ -14,6 +14,7 @@ public class AffichageUnAliment extends AppCompatActivity {
     int quantite;
     String nomProduit;
     private AlimentsOperations alimentsOperations;
+    TextView textquantite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class AffichageUnAliment extends AppCompatActivity {
                             "date d'ajout: "+ dateAjout +"\n"+
                             "date de péremption: "+datePeremption);
 
-        TextView textquantite = findViewById(R.id.textQuantite);
+        textquantite = findViewById(R.id.textQuantite);
         textquantite.setText( "quantité: "+ "\n" + String.valueOf(quantite));
 
     }
@@ -44,7 +45,8 @@ public class AffichageUnAliment extends AppCompatActivity {
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
         alimentsOperations.open();
         alimentsOperations.ModifierQuantite(codebarre,quantite+1,  dateAjout, datePeremption, nomProduit);
-        quantite=alimentsOperations.RetourneQuantite(codebarre,quantite);
+        quantite= alimentsOperations.RetourneQuantite(codebarre,quantite);
+        textquantite.setText( "quantité: "+ "\n" + String.valueOf(quantite));
         alimentsOperations.close();
     }
 
@@ -54,7 +56,10 @@ public class AffichageUnAliment extends AppCompatActivity {
             alimentsOperations.open();
             alimentsOperations.ModifierQuantite(codebarre, quantite - 1,  dateAjout, datePeremption, nomProduit);
             quantite = alimentsOperations.RetourneQuantite(codebarre, quantite);
+            textquantite.setText( "quantité: "+ "\n" + String.valueOf(quantite));
             alimentsOperations.close();
+        }else{
+            alimentsOperations.EffacerAliment(codebarre);
         }
     }
 }

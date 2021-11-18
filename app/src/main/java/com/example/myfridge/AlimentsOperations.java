@@ -59,6 +59,9 @@ public class AlimentsOperations {
 
          */
     }
+    public void EffacerAliment(String codebarre){
+        database.execSQL("DELETE FROM aliments WHERE id= " + codebarre, new String[]{});
+    }
 
     public int RetourneQuantite(String codebarre,int AncienneQuantite){
 
