@@ -12,10 +12,10 @@ import android.widget.TextView;
 public class CustomAdapter extends BaseAdapter {
     Context context;
     String[] NomAliments;
-    String[] QuantiteAliments;
+    int[] QuantiteAliments;
     LayoutInflater inflater;
 
-    public CustomAdapter(AffichageFrigoActivity affichageFrigoActivity, String[] nomsAliments, String[] quantiteAliments) {
+    public CustomAdapter(AffichageFrigoActivity affichageFrigoActivity, String[] nomsAliments, int[] quantiteAliments) {
         this.context = affichageFrigoActivity;
         this.NomAliments=nomsAliments;
         this.QuantiteAliments=quantiteAliments;
@@ -42,7 +42,7 @@ public class CustomAdapter extends BaseAdapter {
         convertView = inflater.inflate(R.layout.affichage_aliment_spinner,null);
         TextView texteQuantite = (TextView) convertView.findViewById(R.id.textViewNombre);
         TextView texteNomProduit = (TextView) convertView.findViewById(R.id.textViewNomProduit);
-        texteQuantite.setText(QuantiteAliments[position]);
+        texteQuantite.setText(String.valueOf(QuantiteAliments[position]));
         texteNomProduit.setText(NomAliments[position]);
         return convertView;
     }

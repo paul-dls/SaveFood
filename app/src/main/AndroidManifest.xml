@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFridge">
         <activity
+            android:name=".AffichageUnAliment"
+            android:exported="false" />
+        <activity
             android:name=".AffichageFrigoActivity"
             android:exported="false" />
         <activity

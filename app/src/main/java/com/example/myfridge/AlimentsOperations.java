@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Vector;
 
@@ -31,6 +32,35 @@ public class AlimentsOperations {
     public void close() {
         dbHelper.close();
     }
+
+    public void ModifierQuantite(String codebarre, int Nouvellequantite){
+        try{
+            Cursor cursor = database.rawQuery("UPDATE aliments SET quantite= "+ String.valueOf(Nouvellequantite)+ " WHERE id = " + codebarre, new String[]{});
+        }catch (Exception e){
+            Log.i("erreur UPDATE",e.toString());
+        }
+    }
+
+    public int RetourneQuantite(String codebarre,int AncienneQuantite){
+        Cursor cursor = database.rawQuery("SELECT quantite FROM aliments WHERE id= " + codebarre, new String[]{});
+        int quantite = AncienneQuantite;
+        /*
+        if (cursor.moveToFirst()==true ){
+            quantite = cursor.getInt(0);
+        }
+            return quantite; */
+
+        int numeroColonneQuantite = cursor.getColumnIndexOrThrow(dbHelper.getQuantite());
+
+        if (cursor.moveToFirst() == true) {
+            do {
+                quantite = cursor.getInt(numeroColonneQuantite);
+            } while (cursor.moveToNext());
+        }
+        return quantite;
+
+    }
+
     public long addAliments(Aliments a) {
 
         ContentValues valeurs = new ContentValues();
@@ -100,18 +130,20 @@ public class AlimentsOperations {
         return lAliments;
     }
 
-    // fonction renvoyant le nom et la quantité des aliments
-    public Vector<String[]> listeNomAliment() {
+    // fonction renvoyant le nom, la quantité et le codebarre des aliments
+    public Vector<String[]> listeNomQuantiteCodebarre() {
         Vector<String[]> listeNomAliment = new Vector<String[]>();
         String[] NomQuantite = new String[2];
-        Cursor cursor = database.rawQuery("SELECT nom_produit, quantite FROM aliments", new String[]{});
+        Cursor cursor = database.rawQuery("SELECT nom_produit, quantite, codebarre FROM aliments", new String[]{});
         int numeroColonneNom_Produit = cursor.getColumnIndexOrThrow(dbHelper.getNom_Produit());
         int numeroColonneQuantite = cursor.getColumnIndexOrThrow(dbHelper.getQuantite());
+        int numeroColonnecodebarre = cursor.getColumnIndexOrThrow(dbHelper.getId());
         if (cursor.moveToFirst() == true) {
             do {
                 String nomProduit =  cursor.getString(numeroColonneNom_Produit);
                 String quantite =  String.valueOf(cursor.getInt(numeroColonneQuantite));
-                NomQuantite = new String[]{nomProduit,quantite};
+                String codebarre = cursor.getString(numeroColonnecodebarre);
+                NomQuantite = new String[]{nomProduit,quantite,codebarre};
                 listeNomAliment.add(NomQuantite);
             } while (cursor.moveToNext());
         }
