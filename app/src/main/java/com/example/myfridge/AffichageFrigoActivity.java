@@ -117,6 +117,12 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
         spin.setAdapter(customAdapter);
     }
 
+    public void RetourHome(View view) {
+        Intent versMainActivity = new Intent();
+        versMainActivity.setClass(this, MainActivity.class);
+        startActivity(versMainActivity);
+    }
+
     private class urlResponseListener implements Response.Listener<String> {
         @Override
         public void onResponse(String response) {
