@@ -92,4 +92,10 @@ public class AffichageUnAliment extends AppCompatActivity {
         versMainActivity.setClass(this,MainActivity.class);
         startActivity(versMainActivity);
     }
+
+    public void RetourHome(View view) {
+        Intent versMainActivity= new Intent();
+        versMainActivity.setClass(this, MainActivity.class);
+        startActivity(versMainActivity);
+    }
 }

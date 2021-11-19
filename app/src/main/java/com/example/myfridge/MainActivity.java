@@ -114,4 +114,10 @@ public class MainActivity extends AppCompatActivity {
         versListeCourse.setClass(this,ListeCourseActivity.class);
         startActivity(versListeCourse);
     }
+
+    public void AfficherProduitDateCourte(View view) {
+        Intent versAlimentDateCourte= new Intent();
+        versAlimentDateCourte.setClass(this, AlimentsDateCourte.class);
+        startActivity(versAlimentDateCourte);
+    }
 }

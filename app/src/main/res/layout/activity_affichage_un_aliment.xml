@@ -52,12 +52,13 @@
         android:onClick="effacerAliment"
         android:text="Effacer l'Aliment" />
 
-    <ImageView
-        android:id="@+id/imageViewAliment"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="50dp"
-        />
+    <Button
+        android:id="@+id/buttonRetour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Retour à l'accueil"
+        android:backgroundTint="#239ED6"
+        android:onClick="RetourHome" />
 
 
 </LinearLayout>

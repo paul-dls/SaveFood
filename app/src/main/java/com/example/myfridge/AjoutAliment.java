@@ -59,7 +59,7 @@ public class AjoutAliment extends AppCompatActivity {
         //finish();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    //@RequiresApi(api = Build.VERSION_CODES.O)
     public void AjouterAlimentBDD(View view) {
         EditText editQuantite =findViewById(R.id.editTextQuantite);
         quantite = (int) Integer.parseInt(editQuantite.getText().toString());
@@ -73,7 +73,7 @@ public class AjoutAliment extends AppCompatActivity {
         alimentsOperations.close();
         Log.i("getInfo","fermeture BDD");
 
-        Notification.envoyerNotif(aliment, this);
+        //Notification.envoyerNotif(aliment, this);
 
         Intent versMainActvity = new Intent();
         versMainActvity.setClass(this, MainActivity.class);
