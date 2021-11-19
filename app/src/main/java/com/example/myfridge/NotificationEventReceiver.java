@@ -43,6 +43,7 @@ public class NotificationEventReceiver extends WakefulBroadcastReceiver {
         if (serviceIntent != null) {
             try {
                 startWakefulService(context, serviceIntent);
+                Log.i("normal paul notif","appel de startWakeFulService");
             }catch(Exception e){
                 Log.i("erreur paul notif",e.toString());
             }
