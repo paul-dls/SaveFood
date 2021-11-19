@@ -129,7 +129,13 @@ public class Notification {
             //ici on envoie la notif après un certain temps : duree
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
-                public void run() { notificationManager.notify(1, builder.build()); }
+                public void run() {
+                    try {
+                        notificationManager.notify(Integer.parseInt(aliment.getId().substring(0,7)), builder.build());
+                    }catch(Exception e){
+                        Log.i("erreur paul notif",e.toString());
+                    }
+                }
             }, duree);
         }catch(Exception e){
             Log.i("erreur paul notif", e.toString());
