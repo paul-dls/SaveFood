@@ -54,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Retour à l'accueil"
+        android:backgroundTint="#239ED6"
         android:onClick="RetourHome" />
 
 
