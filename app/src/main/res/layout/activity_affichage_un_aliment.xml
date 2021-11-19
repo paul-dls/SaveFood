@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:backgroundTint="#FF0000"
+        android:backgroundTint="#239ED6"
         android:onClick="effacerAliment"
         android:text="Effacer l'Aliment" />
 
