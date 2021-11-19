@@ -78,9 +78,7 @@ public class Notification {
             //ici on envoie la notif après un certain temps : duree
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
-                public void run() {
-                    notificationManager.notify(1, builder.build());
-                }
+                public void run() { notificationManager.notify(1, builder.build()); }
             }, duree);
         }catch(Exception e){
             Log.i("erreur paul notif", e.toString());

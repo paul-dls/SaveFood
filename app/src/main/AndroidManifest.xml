@@ -8,6 +8,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="Android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="Android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="Android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -54,6 +57,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".notifications.NotificationIntentService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver android:name=".broadcast_receivers.NotificationEventReceiver" />
+        <receiver android:name=".broadcast_receivers.NotificationServiceStarterReceiver">
+            <intent-filter>
+                <action android:name="Android.intent.action.BOOT_COMPLETED" />
+                <action android:name="Android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="Android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
