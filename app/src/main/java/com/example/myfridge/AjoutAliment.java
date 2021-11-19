@@ -72,7 +72,7 @@ public class AjoutAliment extends AppCompatActivity {
         alimentsOperations.close();
         Log.i("getInfo","fermeture BDD");
 
-        Notification.envoyerNotif(aliment, this);
+        //Notification.envoyerNotif(aliment, this); //n'est plus a jour
 
         Intent versMainActvity = new Intent();
         versMainActvity.setClass(this, MainActivity.class);
