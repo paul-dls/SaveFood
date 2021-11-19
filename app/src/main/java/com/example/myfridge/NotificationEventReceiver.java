@@ -37,11 +37,11 @@ public class NotificationEventReceiver extends WakefulBroadcastReceiver {
         Intent serviceIntent = null;
         if (ACTION_START_NOTIFICATION_SERVICE.equals(action)) {
             Log.i(getClass().getSimpleName(), "onReceive from alarm, starting notification service");
-            serviceIntent = NotificationIntentService.createIntentStartNotificationService(context);
+            //serviceIntent = NotificationIntentService.createIntentStartNotificationService(context);
             Notification.envoyerNotif(new Aliments("1","patate","19-11-2021","20-11-2021",2),context);
         } else if (ACTION_DELETE_NOTIFICATION.equals(action)) {
             Log.i(getClass().getSimpleName(), "onReceive delete notification action, starting notification service to handle delete");
-            serviceIntent = NotificationIntentService.createIntentDeleteNotification(context);
+            //serviceIntent = NotificationIntentService.createIntentDeleteNotification(context);
         }
 
         if (serviceIntent != null) {

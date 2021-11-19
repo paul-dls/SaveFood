@@ -60,11 +60,6 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".NotificationIntentService"
-            android:enabled="true"
-            android:exported="false" />
-
         <receiver android:name=".NotificationEventReceiver" />
         <receiver android:name=".NotificationServiceStarterReceiver"
             android:exported="true">
