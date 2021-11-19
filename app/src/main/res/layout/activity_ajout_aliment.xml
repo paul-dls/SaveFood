@@ -78,7 +78,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:minHeight="48dp"
-            android:text="1" />
+            />
     </LinearLayout>
 
     <Button
