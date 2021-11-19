@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         startManagingCursor(matrixCursor);
         matrixCursor.addRow(new Object[] { 1,"nom de l'aliment","date de péremption","quantité" });
         ListView listViewAliment = findViewById(R.id.listViewAliments);
+        NotificationEventReceiver.setupAlarm(getApplicationContext());
+
 
         try {
             //affichage de la liste des aliments de la BDD dans le listView
