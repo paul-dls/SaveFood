@@ -9,9 +9,8 @@
     <Spinner
         android:id="@+id/simpleSpinner"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_height="600dp"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button2"
