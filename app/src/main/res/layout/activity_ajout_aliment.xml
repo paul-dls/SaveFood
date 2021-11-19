@@ -29,7 +29,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/boutonScanDate"
@@ -78,7 +79,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:minHeight="48dp"
-            android:text="1" />
+            android:hint="1" />
     </LinearLayout>
 
     <Button

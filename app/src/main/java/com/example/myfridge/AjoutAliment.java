@@ -63,6 +63,7 @@ public class AjoutAliment extends AppCompatActivity {
     public void AjouterAlimentBDD(View view) {
         EditText editQuantite =findViewById(R.id.editTextQuantite);
         quantite = (int) Integer.parseInt(editQuantite.getText().toString());
+        aliment.setQuantite(quantite);
         //Ajout de l'aliment dans la base de données
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
         alimentsOperations.open();
