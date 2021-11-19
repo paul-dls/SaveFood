@@ -36,6 +36,8 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
     private Aliments aliment;
     private Intent versAjoutAliment;
 
+
+    //on verifie que l'on a bien les bonnes permissions
     @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -58,12 +60,11 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        //on récupère les données que l'on a vait deja sur l'aliment
         Intent deScanActivity = getIntent();
         aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
 
-        //Log.i("erreur intent paul",aliment.getId());
-
+        //on affiche en bas à droite ce qui est lu
         setContentView(R.layout.activity_scanner_date);
         cameraView = findViewById(R.id.surface_view);
         txtView = findViewById(R.id.txtview);
@@ -71,6 +72,7 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
         if (!txtRecognizer.isOperational()) {
             Log.e("erreur camera date paul", "les dependencies du detecteur de text ne sont pas encore disponibles");
         } else {
+            //on appelle la camera
             cameraSource = new CameraSource.Builder(getApplicationContext(), txtRecognizer)
                     .setFacing(CameraSource.CAMERA_FACING_BACK)
                     .setRequestedPreviewSize(1280, 1024)
@@ -111,25 +113,29 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
 
     }
 
+    //si on recoit du texte
     @Override
     public void receiveDetections(Detector.Detections detections) {
         SparseArray items = detections.getDetectedItems();
         final StringBuilder strBuilder = new StringBuilder();
 
+        //on parcours les paragraphes
         for (int j = 0; j < items.size(); j++) {
             TextBlock textBlock = (TextBlock) items.valueAt(j);
 
             //on recupère les paragraphes (séparées par des *)
-            //strBuilder.append(textBlock.getValue());
             strBuilder.append("*");
 
+            //on parcours les lignes du paragraphe
             for (Text line : textBlock.getComponents()) {
+
                 //on recupère les lignes (séparées par des _)
-                //Log.v("fontionnement normal camera date paul, lines", line.getValue());
-                //strBuilder.append(line.getValue());
                 strBuilder.append("_");
+
+                //on parcours les mots de la ligne
                 for (Text element : line.getComponents()) {
-                    //on recupère les mots
+
+                    //on recupère les mots (séparés par des espaces)
                     Log.v("normal camera date paul", element.getValue());
                     strBuilder.append(element.getValue());
                     strBuilder.append(" ");
@@ -150,10 +156,12 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                 textRecup = textRecup.replaceAll("[\\. /:]", "\\-");
                 Log.i("normal date paul", "textRecupModifié = " +textRecup);
 
-                // on créé un moteur de recherche de date
+                // on créé un moteur de recherche de date, c'est un premier filtre
+                //il autorise 31 jours et 12 mois mais ne vérifie pas réellement si la date existe
                 Pattern p = Pattern.compile("((0[1-9])|([1-2][0-9])|(30)|(31))\\-((0[1-9])|(1[0-2]))\\-((202[1-9])|(2[1-9]))");
                 Matcher m = p.matcher(textRecup);
 
+                //format de date utilisé
                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
                 //to do, utiliser un while et cecker plusieurs date si la premiere declanche une erreur
@@ -161,8 +169,10 @@ public class ScannerDateActivity extends AppCompatActivity implements SurfaceHol
                     Log.v("normal date paul","au moins un mot du format date trouvé");
                     rawDateString = m.group();
                     try {
+                        //on verifie si c'est une date réelle
                         Date datePeremption = format.parse(rawDateString);
 
+                        //on rappelle ajoutActivity avec l'aliment modifié
                         aliment.setDate_peremption(rawDateString);
                         versAjoutAliment = new Intent();
                         versAjoutAliment.setClass(getBaseContext(), AjoutAliment.class);

@@ -23,26 +23,22 @@ import java.util.Vector;
 
 public class Notification {
 
-    private static Aliments aliment;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    static public void Notifier(Context context){//envoyer toutes les notifs de peremptions proche
+    static public void Notifier(Context context){//envoyer toutes les notifs de peremptions proches
         try {
-            //affichage de la liste des aliments de la BDD dans le listView
+
             //création de l'objet permettant de modifier la BDD
             AlimentsOperations alimentsOperations = new AlimentsOperations(context);
             // On stocke dans le vecteur "lAlimentss" la liste des aliments
             // contenus dans la table "aliments" de la base de données
             Vector<Aliments> lAliments;
             alimentsOperations.open();
-            //alimentsOperations.vider();
 
             lAliments = alimentsOperations.listAllAliments();
             alimentsOperations.close();
 
 
-            // On associe au modèle de la ListView le vecteur de contacts
-            // "lContacts"
             if (lAliments != null) {
                 String[] anArrayString = new String[lAliments.size()];
                 for (int i = 0; i < lAliments.size(); i++) {
@@ -57,7 +53,7 @@ public class Notification {
                         new ArrayAdapter<String>(context,
                                 android.R.layout.simple_list_item_1,
                                 anArrayString);
-
+                //on parcourt lAliments et on renvoie chaque aliment vers envoyerNotif
                 for(Aliments aliment : lAliments){
                     envoyerNotif(aliment,context);
                 }
@@ -73,8 +69,6 @@ public class Notification {
         Log.i("normal paul date", "envoyerNotif appele");
 
         long duree;
-
-        //ajouter date d'expiration
         Date date_expi;
 
         SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
@@ -109,10 +103,9 @@ public class Notification {
         CharSequence name = "Péremption";
         String description = "notification pour les péremptions proches";
         int importance = NotificationManager.IMPORTANCE_HIGH;
+
         NotificationChannel channel = new NotificationChannel("channel1", name, importance);
         channel.setDescription(description);
-        // Register the channel with the system; you can't change the importance
-        // or other notification behaviors after this
         NotificationManager notificationManager = mContext.getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
 
@@ -126,10 +119,11 @@ public class Notification {
             //        .setSamallIcon(R.drawable.icone);
             NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(mContext);
 
-            //ici on envoie la notif après un certain temps : duree
+            //ici on envoie la notif
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    //on créé un builder avec l'id du produit, ce qui peremt d'ecraser les notifications de ce produit si elles etaient encore la
                     try {
                         notificationManager.notify(Integer.parseInt(aliment.getId().substring(0,7)), builder.build());
                     }catch(Exception e){

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.io.Serializable;
 
+//Un objet que l'on utilise pour stocker toutes les données d'un aliment de facon simple
+
 //création entité aliments
 public class Aliments implements Serializable {
     private String id;
