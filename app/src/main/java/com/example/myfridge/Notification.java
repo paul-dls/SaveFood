@@ -12,19 +12,64 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Vector;
 
 public class Notification {
 
     private static Aliments aliment;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    static public void Notifier(Context context){//envoyer toutes les notifs de peremptions proche
+        try {
+            //affichage de la liste des aliments de la BDD dans le listView
+            //création de l'objet permettant de modifier la BDD
+            AlimentsOperations alimentsOperations = new AlimentsOperations(context);
+            // On stocke dans le vecteur "lAlimentss" la liste des aliments
+            // contenus dans la table "aliments" de la base de données
+            Vector<Aliments> lAliments;
+            alimentsOperations.open();
+            //alimentsOperations.vider();
+
+            lAliments = alimentsOperations.listAllAliments();
+            alimentsOperations.close();
+
+
+            // On associe au modèle de la ListView le vecteur de contacts
+            // "lContacts"
+            if (lAliments != null) {
+                String[] anArrayString = new String[lAliments.size()];
+                for (int i = 0; i < lAliments.size(); i++) {
+                    String s = lAliments.get(i).getId() + " - " +
+                            lAliments.get(i).getNom_produit() + " : " +
+                            lAliments.get(i).getDate_ajout() + ":" +
+                            lAliments.get(i).getDate_peremption() + ":" +
+                            lAliments.get(i).getQuantite();
+                    anArrayString[i] = s;
+                }
+                ArrayAdapter<String> listArrayAdapter =
+                        new ArrayAdapter<String>(context,
+                                android.R.layout.simple_list_item_1,
+                                anArrayString);
+
+                for(Aliments aliment : lAliments){
+                    envoyerNotif(aliment,context);
+                }
+            }
+        }catch(Exception e){
+            Log.i("erreur BDD paul", e.toString());
+        }
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    static public void envoyerNotif(Aliments aliment, Context mContext) {
+    static private void envoyerNotif(Aliments aliment, Context mContext) {// test pour savoir si l'aliment est bientot perimé
         Log.i("normal paul date", "envoyerNotif appele");
 
         long duree;
