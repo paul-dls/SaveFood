@@ -10,6 +10,7 @@ import androidx.legacy.content.WakefulBroadcastReceiver;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class NotificationEventReceiver extends WakefulBroadcastReceiver {
 
@@ -22,7 +23,8 @@ public class NotificationEventReceiver extends WakefulBroadcastReceiver {
         PendingIntent alarmIntent = getStartPendingIntent(context);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
                 getTriggerAt(new Date()),
-                NOTIFICATIONS_INTERVAL_IN_HOURS * AlarmManager.INTERVAL_HOUR,
+                //NOTIFICATIONS_INTERVAL_IN_HOURS * AlarmManager.INTERVAL_HOUR,
+                30000,
                 alarmIntent);
     }
 
@@ -39,7 +41,11 @@ public class NotificationEventReceiver extends WakefulBroadcastReceiver {
         }
 
         if (serviceIntent != null) {
-            startWakefulService(context, serviceIntent);
+            try {
+                startWakefulService(context, serviceIntent);
+            }catch(Exception e){
+                Log.i("erreur paul notif",e.toString());
+            }
         }
     }
 

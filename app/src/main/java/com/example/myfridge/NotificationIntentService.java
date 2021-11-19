@@ -5,8 +5,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.legacy.content.WakefulBroadcastReceiver;
 
@@ -51,7 +53,6 @@ public class NotificationIntentService extends IntentService {
     private void processDeleteNotification(Intent intent) {
         // Log something?
     }
-
     private void processStartNotification() {
         // Do something. For example, fetch fresh data from backend to create a rich notification?
 
