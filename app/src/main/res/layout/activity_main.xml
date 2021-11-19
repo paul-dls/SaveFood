@@ -39,6 +39,7 @@
             android:text="Voir le contenu mon frigo" />
 
         <ListView
+            android:layout_marginLeft="20dp"
             android:id="@+id/listViewAliments"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
