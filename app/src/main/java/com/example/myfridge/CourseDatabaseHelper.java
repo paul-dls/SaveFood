@@ -21,7 +21,7 @@ public class CourseDatabaseHelper extends SQLiteOpenHelper{
             "create table " + TABLE_PRODUITS +
                     "(" + ID + " integer primary key autoincrement, " +
                     NOM_PRODUIT + " text not null, " +
-                    QUANTITE + " text not null) ;";
+                    QUANTITE + " integer not null) ;";
 
     // Requête SQL de suppression de la table "contacts" dans la base de données
     private static final String REQUETE_SUPPRESSION_TABLE =
