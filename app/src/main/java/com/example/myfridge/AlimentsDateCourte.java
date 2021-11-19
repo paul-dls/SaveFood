@@ -35,14 +35,14 @@ public class AlimentsDateCourte extends AppCompatActivity {
 
 
         // Définition des colonnes
-// NB : SimpleCursorAdapter a besoin obligatoirement d'un ID nommé "_id"
+        // NB : SimpleCursorAdapter a besoin obligatoirement d'un ID nommé "_id"
         String[] columns = new String[] { "_id", "col1", "col2", "col3" };
 
-// Définition des données du tableau
-// les lignes ci-dessous ont pour seul but de simuler
-// un objet de type Cursor pour le passer au SimpleCursorAdapter.
-// Si vos données sont issues d'une base SQLite,
-// utilisez votre "cursor" au lieu du "matrixCursor"
+        // Définition des données du tableau
+        // les lignes ci-dessous ont pour seul but de simuler
+        // un objet de type Cursor pour le passer au SimpleCursorAdapter.
+        // Si vos données sont issues d'une base SQLite,
+        // utilisez votre "cursor" au lieu du "matrixCursor"
         MatrixCursor matrixCursor= new MatrixCursor(columns);
         startManagingCursor(matrixCursor);
         matrixCursor.addRow(new Object[] { 1,"nom de l'aliment","date de péremption","quantité" });
@@ -63,8 +63,8 @@ public class AlimentsDateCourte extends AppCompatActivity {
             alimentsOperations.close();
 
 
-            // On associe au modèle de la ListView le vecteur de contacts
-            // "lContacts"
+            // On associe au modèle de la ListView le vecteur d'aliments
+            // "lAliments"
             if (lAliments != null) {
                 NomAliments = new String[lAliments.size()];
                 DatePeremptionAliments = new String[lAliments.size()];
@@ -89,13 +89,13 @@ public class AlimentsDateCourte extends AppCompatActivity {
         // on prendra les données des colonnes 1, 2 et 3...
         String[] from = new String[] {"col1", "col2", "col3"};
 
-// ...pour les placer dans les TextView définis dans "row_item.xml"
+        // ...pour les placer dans les TextView définis dans "item_tableau_aliment_date_courte.xml"
         int[] to = new int[] { R.id.textViewNomAliment, R.id.textViewDatePeremption,R.id.textViewQuantite};
 
-// création de l'objet SimpleCursorAdapter...
+        // création de l'objet SimpleCursorAdapter...
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.item_tableau_aliment_date_courte, matrixCursor, from, to, 0);
 
-// ...qui va remplir l'objet ListView
+        // ...qui va remplir l'objet ListView
         listeProduitDateCourte.setAdapter(adapter);
     }
 

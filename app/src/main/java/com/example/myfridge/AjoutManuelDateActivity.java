@@ -22,29 +22,6 @@ public class AjoutManuelDateActivity extends AppCompatActivity {
 
         Intent deScanActivity = getIntent();
         aliment = (Aliments)deScanActivity.getSerializableExtra("aliment");
-
-        //recupération du code barre
-        //Intent deMainActivity = getIntent();
-        //codebarre = deMainActivity.getStringExtra("codebarre");
-
-        /*
-        //requête internet pour trouver le nom du produit
-        String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Response.Listener<String> responseListener = new urlResponseListener();
-        Response.ErrorListener responseErrorListener = new urlResponseErrorListener();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener,responseErrorListener);
-        requestQueue.add(stringRequest);
-
-
-
-        // récupération date d'ajout
-        Calendar calendrier=Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM -yyyy");
-        dateAjout= df.format(calendrier.getTime());
-        Log.i("fonctionnement normal", "date d'ajout récupérée");
-
-        */
     }
     //récupération de la date de péremption entrée par l'utilisateur et de la date d'ajout du produit, pour la transmettre à la BDD
     public void ajouterDatePeremption(View view) {
@@ -65,63 +42,5 @@ public class AjoutManuelDateActivity extends AppCompatActivity {
         startActivity(versAjoutAliment);
         finish();
 
-        /*
-        //affichage données du produit
-        TextView textView = findViewById(R.id.nomProduit);
-        textView.setText("codebarre: " + codebarre + "nom du Produit: " + nomProduit + "\n" + "Date de l'ajout: " + dateAjout + "\n" + "date de péremption: " + datePeremption);
-
-
-        //Ajout de l'aliment dans la base de données
-        AlimentsOperations alimentsOperations = new AlimentsOperations(this);
-        alimentsOperations.open();
-        Log.i("getInfo","ouverture BDD");
-        alimentsOperations.addAliments(new Aliments(codebarre,nomProduit,dateAjout));
-        Log.i("getInfo","ajout Aliment");
-        alimentsOperations.close();
-        Log.i("getInfo","fermeture BDD");
-
-         */
-
-        /*
-        //retour Home
-        Intent versHome= new Intent();
-        versHome.setClass(this,NavigationDrawerActivity.class);
-        startActivity(versHome);
-        */
-
     }
-
-
-
-
-    /*
-    private class urlResponseListener implements Response.Listener<String> {
-        @Override
-        public void onResponse(String response) {
-            try {
-                //récupération nom du produit à partir du résultat de la requête internet
-                JSONObject obj = new JSONObject(response);
-                Log.i("test", "recupère JSON");
-                JSONObject product = obj.getJSONObject("product");
-                Log.i("test", "recupère JSON product");
-                nomProduit = product.getString("product_name");
-                Log.i("test", "nomProduit");
-
-
-                Log.i("test", "affiche nom Produit");
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Log.i("test", e.toString());
-            }
-
-        }
-    }
-    private class urlResponseErrorListener implements Response.ErrorListener {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-
-        }
-    }
-
-     */
 }

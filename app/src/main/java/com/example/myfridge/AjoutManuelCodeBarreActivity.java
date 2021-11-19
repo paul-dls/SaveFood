@@ -69,7 +69,7 @@ public class AjoutManuelCodeBarreActivity extends AppCompatActivity {
     }
 
 
-
+    //methode onVlick permettant à l'utilisateur de récupérer un codebarre rentrer manuellement et réalise une requête internet pour récupérer le nom du Produit
     public void EntreeCodebarre(View view) {
         EditText editCodebarre = findViewById(R.id.editCodebarre);
         codebarre = editCodebarre.getText().toString();

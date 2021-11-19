@@ -43,39 +43,19 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affichage_frigo);
 
-        /*
-        // récupération du nom et de la quantite des aliments à afficher dans le spinenr (menu déroulant)
-        alimentsOperations = new AlimentsOperations(this);
-        Vector<String[]> listeNomQuantiteCode;
-        alimentsOperations.open();
-        listeNomQuantiteCode = alimentsOperations.listeNomQuantiteCodebarre();
-        alimentsOperations.close();
-        if (listeNomQuantiteCode != null) {
-            NomsAliments =new  String[listeNomQuantiteCode.size()];
-            QuantiteAliments= new String [listeNomQuantiteCode.size()];
-            CodebarreAliments =new String[listeNomQuantiteCode.size()];
-            for (int i = 0; i < listeNomQuantiteCode.size(); i++) {
-                String nom = listeNomQuantiteCode.get(i)[0];
-                String quantite = listeNomQuantiteCode.get(i)[1];
-                String codebarre = listeNomQuantiteCode.get(i)[2];
-                NomsAliments[i] = nom;
-                QuantiteAliments[i] = quantite;
-                CodebarreAliments[i]= codebarre;
-            }
-        }
 
-        */
+        //on récupére les aliments de la BDD pour les afficher dans un tableau
         alimentsOperations = new AlimentsOperations(this);
         // On stocke dans le vecteur "lAlimentss" la liste des aliments
         // contenus dans la table "aliments" de la base de données
         alimentsOperations.open();
-        //alimentsOperations.vider();
+
 
         lAliments = alimentsOperations.listAllAliments();
         alimentsOperations.close();
 
-        // On associe au modèle de la ListView le vecteur de contacts
-        // "lContacts"
+        // On associe au modèle de la ListView le vecteur d'aliments
+        // "lAliments"
         if (lAliments != null) {
             NomsAliments =new  String[lAliments.size()];
             QuantiteAliments= new int [lAliments.size()];
@@ -95,6 +75,8 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
                 DateAjoutAliments[i] = dateAjout;
                 DatePeremptionAliments[i] = datePeremption;
 
+
+                //requête internet pour aller chercher la photo de chaque aliment
                 String url= "https://world.openfoodfacts.org/api/v0/product/" + codebarre + ".json";
                 RequestQueue requestQueue = Volley.newRequestQueue(this);
                 Response.Listener<String> responseListener = new AffichageFrigoActivity.urlResponseListener();
@@ -109,11 +91,11 @@ public class AffichageFrigoActivity extends AppCompatActivity implements Adapter
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
         spin.setOnItemSelectedListener(this);
 
-//Creating the ArrayAdapter instance having the bank name list
+        //Creating the ArrayAdapter instance having the bank name list
         CustomAdapter customAdapter = new CustomAdapter(this,NomsAliments,urlImageAliments);
         //ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,NomsAliments);
         //aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//Setting the ArrayAdapter data on the Spinner
+        //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(customAdapter);
     }
 

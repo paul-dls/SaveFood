@@ -83,6 +83,7 @@ public class AffichageUnAliment extends AppCompatActivity {
         }
     }
 
+    //methode permettant d'"ffacer un aliment dans la BDD
     public void effacerAliment(View view) {
         AlimentsOperations alimentsOperations = new AlimentsOperations(this);
         alimentsOperations.open();
@@ -93,6 +94,7 @@ public class AffichageUnAliment extends AppCompatActivity {
         startActivity(versMainActivity);
     }
 
+    //méthode onClick pour retourner à l'accueil
     public void RetourHome(View view) {
         Intent versMainActivity= new Intent();
         versMainActivity.setClass(this, MainActivity.class);

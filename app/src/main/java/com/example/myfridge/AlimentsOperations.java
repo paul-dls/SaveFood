@@ -37,27 +37,7 @@ public class AlimentsOperations {
         database.execSQL("DELETE FROM aliments WHERE id= " + codebarre, new String[]{});
         Aliments a = new Aliments(codebarre,nomProduit,dateAjout,datePeremption,Nouvellequantite);
         addAliments(a);
-        /*
-        ContentValues valeurs = new ContentValues();
-        // Initialisation de la variable valeurs avec les couples de
-        // valeurs suivants :
-        //    - (NOM, nom)
-        //    - (NUMERO_TELEPHONE, numeroTelephone)
-        valeurs.put(dbHelper.getId(),codebarre);
-        valeurs.put(dbHelper.getNom_Produit(), nomProduit);
-        valeurs.put(dbHelper.getDate_Ajout(), dateAjout);
-        valeurs.put(dbHelper.getDate_Peremption(),datePeremption);
-        valeurs.put(dbHelper.getQuantite(),Nouvellequantite);
 
-        int count = database.update("aliments",valeurs, "quantite= ?", new String[]{String.valueOf(Nouvellequantite)});
-
-        try{
-            Cursor cursor = database.rawQuery("UPDATE aliments SET quantite= "+ String.valueOf(Nouvellequantite)+ " WHERE id = " + codebarre, new String[]{});
-        }catch (Exception e){
-            Log.i("erreur UPDATE",e.toString());
-        }
-
-         */
     }
     public void EffacerAliment(String codebarre){
         database.execSQL("DELETE FROM aliments WHERE id= " + codebarre, new String[]{});
