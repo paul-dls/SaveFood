@@ -2,9 +2,11 @@ package com.example.myfridge;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -118,5 +120,12 @@ public class AlimentsDateCourte extends AppCompatActivity {
         }
 
         return result;
+    }
+
+    public void RetourHome(View view) {
+        Intent versMainActivity = new Intent();
+        versMainActivity.setClass(this,MainActivity.class);
+        startActivity(versMainActivity);
+
     }
 }
