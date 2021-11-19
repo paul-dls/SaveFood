@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     public void ajouter(View view) {
         // récupération date d'ajout
         Calendar calendrier=Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM -yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String dateAjout= df.format(calendrier.getTime());
         Log.i("fonctionnement normal", "date d'ajout récupérée");
         Log.i("scan", "rentre dans le onClick");
